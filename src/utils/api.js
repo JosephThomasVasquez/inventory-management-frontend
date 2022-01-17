@@ -41,6 +41,5 @@ export async function listCategories(params, signal) {
 // items list route
 export async function listItems(categoryId, signal) {
   const url = new URL(`${API_BASE_URL}/api/categories/${categoryId}/items`);
-
   return await fetchJson(url, { headers, signal }, []);
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { listCategories } from "../utils/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CategoriesList = () => {
+  const navigate = useNavigate();
+
   const [categories, setCategories] = useState(null);
   const [errors, setErrors] = useState(null);
 
@@ -24,12 +26,23 @@ const CategoriesList = () => {
     ));
   };
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="container">
       <div className="row">
         <div className="col">
           <h2>Categories</h2>
         </div>
+        <button
+          type="button"
+          className="btn btn-primary col-1"
+          onClick={handleGoBack}
+        >
+          Back
+        </button>
       </div>
       <div className="col-3">
         <ul className="list-group">{categories && categoryLinks()}</ul>
