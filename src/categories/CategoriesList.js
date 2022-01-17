@@ -17,7 +17,7 @@ const CategoriesList = () => {
     console.log(categories);
     return categories.map((category, index) => (
       <li className="list-group-item" key={category.id}>
-        <Link to={`/categories/${category.id}`}>
+        <Link to={`/categories/${category.id}/items`}>
           <div>{category.name}</div>
         </Link>
       </li>
