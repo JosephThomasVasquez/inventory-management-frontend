@@ -4,7 +4,7 @@ import Routing from "./Routing";
 const Layout = () => {
   return (
     <div>
-      <Routing />
+      <div>Nav</div>
     </div>
   );
 };

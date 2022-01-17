@@ -1,12 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "./layout/Layout";
+import Routing from "./layout/Routing";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />} />
-    </Routes>
-  );
+  return <Routing />;
 }
 
 export default App;
