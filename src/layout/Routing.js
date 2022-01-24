@@ -1,7 +1,7 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Layout";
-import Home from "./Home";
+import Dashboard from "../dashboard/Dashboard";
 import CategoriesList from "../categories/CategoriesList";
 import ItemsList from "../items/ItemsList";
 
@@ -10,7 +10,8 @@ const Routing = () => {
     <>
       <Layout />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Navigate replace to="/dashboard" />} />
         <Route exact path="/categories" element={<CategoriesList />} />
         <Route
           exact
