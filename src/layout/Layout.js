@@ -1,10 +1,12 @@
 import React from "react";
-import Routing from "./Routing";
+import NavMenu from "./NavMenu";
+// import Routing from "./Routing";
 
 const Layout = () => {
   return (
     <div>
-      <div>Nav</div>
+      <NavMenu />
+      <div className="container-fluid"></div>
     </div>
   );
 };
