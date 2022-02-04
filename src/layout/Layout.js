@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div>
       <NavMenu />
-      <div className="container-fluid"></div>
+      <div className="container-fluid mt-3"></div>
     </div>
   );
 };

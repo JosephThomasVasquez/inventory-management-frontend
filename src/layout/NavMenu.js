@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const NavMenu = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           inventoryMS
@@ -59,7 +59,7 @@ const NavMenu = () => {
               Search
             </button>
           </form>
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 pe-4">
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -69,7 +69,7 @@ const NavMenu = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Username
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
