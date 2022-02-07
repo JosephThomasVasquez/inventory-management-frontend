@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { listCategories } from "../utils/api";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import CategoryCard from "./CategoryCard";
 
 const CategoriesList = () => {
   const navigate = useNavigate();
@@ -16,13 +17,9 @@ const CategoriesList = () => {
   }, []);
 
   const categoryLinks = () => {
-    console.log(categories);
+    console.log("categories", categories);
     return categories.map((category, index) => (
-      <li className="list-group-item" key={category.id}>
-        <Link to={`/categories/${category.id}/items`}>
-          <div>{category.name}</div>
-        </Link>
-      </li>
+      <CategoryCard key={category.id} category={category} />
     ));
   };
 
@@ -44,9 +41,7 @@ const CategoriesList = () => {
           Back
         </button>
       </div>
-      <div className="col-3">
-        <ul className="list-group">{categories && categoryLinks()}</ul>
-      </div>
+      <div className="col-6">{categories && categoryLinks()}</div>
     </div>
   );
 };
