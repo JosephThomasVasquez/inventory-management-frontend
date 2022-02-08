@@ -7,7 +7,6 @@ const ItemForm = ({ category }) => {
 
   const location = useLocation();
   console.log(location);
-  console.log(navigate);
 
   const formRefs = useRef([]);
   formRefs.current = [];
@@ -15,6 +14,20 @@ const ItemForm = ({ category }) => {
   const addToRefs = (e) => {
     if (e && !formRefs.current.includes(e)) formRefs.current.push(e);
   };
+
+  const initialFormData = {
+    sku: "",
+    name: "",
+    model: "",
+    description: "",
+    release_date: "",
+    price: 0,
+    quantity_in_stock: 0,
+    weight_in_lbs: 0,
+    photos: [],
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   useEffect(() => {
     gsap.fromTo(
@@ -60,43 +73,103 @@ const ItemForm = ({ category }) => {
       </div>
 
       <form className="col-6">
+        {/* Name */}
         <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="item-name" className="form-label">
+          <label htmlFor="name" className="form-label">
             Item Name
           </label>
           <input
             type="text"
             className="form-control"
-            id="item-name"
-            aria-describedby="item-name"
+            id="name"
+            aria-describedby="name"
             placeholder="Enter name of the item"
           />
         </div>
 
+        {/* Model */}
         <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Item Description
+          <label htmlFor="model" className="form-label">
+            Item Model
           </label>
-          <textarea
+          <input
             type="text"
             className="form-control"
-            id="item-description"
+            id="model"
+            aria-describedby="model"
+            placeholder="Enter model of the item"
           />
         </div>
 
+        {/* Description */}
         <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="item-release-date" className="form-label">
+          <label htmlFor="description" className="form-label">
+            Item Description
+          </label>
+          <textarea type="text" className="form-control" id="description" />
+        </div>
+
+        {/* Release Date */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="release_date" className="form-label">
             Release Date
           </label>
           <input
             type="date"
             className="form-control"
-            id="item-release-date"
-            aria-describedby="item-release-date"
+            id="release_date"
+            aria-describedby="release_date"
+            placeholder="Enter release date of the item"
+          />
+        </div>
+
+        {/* Sku / Product Number */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="sku" className="form-label">
+            Sku / Product Number
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="sku"
+            aria-describedby="sku"
+            placeholder="Enter a Sku or Product Number"
+          />
+        </div>
+
+        {/* Price */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="price" className="form-label">
+            Item price
+          </label>
+          <input
+            type="number"
+            min="0"
+            step="any"
+            className="form-control"
+            id="price"
+            aria-describedby="price"
             placeholder="Enter name of the item"
           />
         </div>
 
+        {/* In Stock */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="quantity_in_stock" className="form-label">
+            Quantity in stock
+          </label>
+          <input
+            type="number"
+            min="0"
+            step="any"
+            className="form-control"
+            id="quantity_in_stock"
+            aria-describedby="quantity_in_stock"
+            placeholder="Enter quanttiy in stock"
+          />
+        </div>
+
+        {/* Checkbox */}
         <div className="mb-3 form-check" ref={addToRefs}>
           <input
             type="checkbox"
