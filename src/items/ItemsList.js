@@ -8,8 +8,8 @@ const ItemsList = () => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
 
-  const cardRef = useRef();
-  const singleCard = gsap.utils.selector(cardRef);
+  const itemRefs = useRef([]);
+  itemRefs.current = [];
 
   const [items, setItems] = useState();
   const [errors, setErrors] = useState(null);
@@ -23,9 +23,13 @@ const ItemsList = () => {
     return () => abortController.abort();
   }, []);
 
+  const addToRefs = (e) => {
+    if (e && !itemRefs.current.includes(e)) itemRefs.current.push(e);
+  };
+
   useEffect(() => {
     gsap.fromTo(
-      singleCard(".card"),
+      itemRefs.current,
       {
         opacity: 0,
         y: -100,
@@ -44,7 +48,11 @@ const ItemsList = () => {
   }, [items]);
 
   const mapItems = () => {
-    return items.map((item) => <ItemCard key={item.id} item={item} />);
+    return items.map((item) => (
+      <div className="col-3" key={item.id} ref={addToRefs}>
+        <ItemCard item={item} />
+      </div>
+    ));
   };
 
   const handleGoBack = () => {
@@ -66,9 +74,7 @@ const ItemsList = () => {
         </button>
       </div>
       <div className="col-3">{categoryId}</div>
-      <div className="row" ref={cardRef}>
-        {items && mapItems()}
-      </div>
+      <div className="row">{items && mapItems()}</div>
     </div>
   );
 };

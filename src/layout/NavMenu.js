@@ -6,9 +6,12 @@ const NavMenu = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          inventoryMS
-        </a>
+        <Link to="/dashboard" className="navbar-brand">
+          <div className="" aria-current="page" href="#">
+            inventoryMS
+          </div>
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"

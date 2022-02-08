@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import { listCategories } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
@@ -7,8 +7,12 @@ import gsap from "gsap";
 const CategoriesList = () => {
   const navigate = useNavigate();
 
-  const cardRef = useRef();
-  const singleCard = gsap.utils.selector(cardRef);
+  const categoryRefs = useRef([]);
+  categoryRefs.current = [];
+
+  const addToRefs = (e) => {
+    if (e && !categoryRefs.current.includes(e)) categoryRefs.current.push(e);
+  };
 
   const [categories, setCategories] = useState(null);
   const [errors, setErrors] = useState(null);
@@ -22,7 +26,7 @@ const CategoriesList = () => {
 
   useEffect(() => {
     gsap.fromTo(
-      singleCard(".card"),
+      categoryRefs.current,
       { opacity: 0, x: 100, stagger: 0.15, duration: 1, ease: "back.out(2.5)" },
       {
         opacity: 1,
@@ -35,10 +39,13 @@ const CategoriesList = () => {
   }, [categories]);
 
   const categoryLinks = () => {
-    // console.log("categories", categories);
-    return categories.map((category, index) => (
-      <CategoryCard key={category.id} category={category} />
-    ));
+    if (categories) {
+      return categories.map((category, index) => (
+        <div key={category.id} ref={addToRefs}>
+          <CategoryCard category={category} />
+        </div>
+      ));
+    }
   };
 
   const handleGoBack = () => {
@@ -59,9 +66,7 @@ const CategoriesList = () => {
           Back
         </button>
       </div>
-      <div className="col-6" ref={cardRef}>
-        {categories && categoryLinks()}
-      </div>
+      <div className="col-6">{categories && categoryLinks()}</div>
     </div>
   );
 };
