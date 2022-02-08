@@ -60,7 +60,49 @@ input[type="color"]:focus,
   background: var(--primary-color) !important;
 }
 
+.btn.btn-outline-primary {
+  background: white;
+  color: var(--primary-color);
+  border-color: 2px solid var(--primary-color);
+  outline: 1 none;
+}
+
+.btn.btn-outline-primary:active,
+.btn.btn-outline-primary:hover {
+  background-color: var(--primary-color-hover);
+  color: white;
+  outline: 0 none;
+}
+
+.btn.btn-outline-primary:focus {
+  background-color: var(--primary-color-hover);
+  border-color: var(--primary-color);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px var(--primary-color);
+  outline: 0 none;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show > .btn-outline-primary.dropdown-toggle {
+  background: var(--primary-color) !important;
+}
+
+/* Controls */
+.button-back {
+  position: relative;
+}
+
 /* CARDS */
+
+.item-card {
+  min-height: 240px;
+  max-height: 240px;
+}
+
+.item-text {
+  min-height: 80px;
+  max-height: 80px;
+}
 
 .card-header {
   background-color: rgba(74, 30, 233, 0.1);

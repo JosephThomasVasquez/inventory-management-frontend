@@ -58,14 +58,17 @@ const CategoriesList = () => {
         <div className="col">
           <h2>Categories</h2>
         </div>
-        <button
-          type="button"
-          className="btn btn-primary col-1"
-          onClick={handleGoBack}
-        >
-          Back
-        </button>
+        <div className="col-1 button-back">
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={handleGoBack}
+          >
+            Back
+          </button>
+        </div>
       </div>
+
       <div className="col-6">{categories && categoryLinks()}</div>
     </div>
   );

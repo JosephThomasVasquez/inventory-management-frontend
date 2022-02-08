@@ -65,13 +65,15 @@ const ItemsList = () => {
         <div className="col">
           <h2>Items</h2>
         </div>
-        <button
-          type="button"
-          className="btn btn-primary col-1"
-          onClick={handleGoBack}
-        >
-          Back
-        </button>
+        <div className="col-1 button-back">
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={handleGoBack}
+          >
+            Back
+          </button>
+        </div>
       </div>
       <div className="col-3">{categoryId}</div>
       <div className="row">{items && mapItems()}</div>
