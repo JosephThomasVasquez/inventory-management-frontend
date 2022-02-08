@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/categories/${category.id}/create`, { state: category });
+  };
+
   return (
     <div className="card shadow my-2">
       <div className="card-header py-0">
@@ -16,6 +22,9 @@ const CategoryCard = ({ category }) => {
         >
           <div className="">Items</div>
         </Link>
+        <button className="col-2 btn btn-primary ms-3" onClick={handleClick}>
+          <div className="">Add Item</div>
+        </button>
       </div>
     </div>
   );
