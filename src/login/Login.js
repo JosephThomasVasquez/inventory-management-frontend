@@ -96,7 +96,7 @@ const Login = () => {
               Submit
             </button>
 
-            <div className="col-5 my-auto ms-auto" ref={addToRefs}>
+            <div className="col-5 my-auto ms-auto text-end p-0" ref={addToRefs}>
               Need an account?
               <span
                 className="text-primary fw-bold"

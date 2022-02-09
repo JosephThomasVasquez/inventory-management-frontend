@@ -91,100 +91,106 @@ const Register = ({ errorHandler }) => {
 
       <div className="row">
         <form className="col-6" onSubmit={handleSubmit}>
-          {/* first_name */}
-          <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="first_name" className="form-label">
-              First Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="first_name"
-              id="first_name"
-              aria-describedby="first_name"
-              placeholder="Enter First Name"
-              onChange={handleChange}
-            />
+          <div className="row">
+            {/* first_name */}
+            <div className="col-6 mb-3" ref={addToRefs}>
+              <label htmlFor="first_name" className="form-label">
+                First Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="first_name"
+                id="first_name"
+                aria-describedby="first_name"
+                placeholder="Enter First Name"
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* last_name */}
+            <div className="col-6 mb-3" ref={addToRefs}>
+              <label htmlFor="last_name" className="form-label">
+                Last Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="last_name"
+                id="last_name"
+                aria-describedby="last_name"
+                placeholder="Enter Last Name"
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
-          {/* last_name */}
-          <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="last_name" className="form-label">
-              Last Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="last_name"
-              id="last_name"
-              aria-describedby="last_name"
-              placeholder="Enter Last Name"
-              onChange={handleChange}
-            />
+          <div className="row">
+            {/* user_name */}
+            <div className="col-6 mb-3" ref={addToRefs}>
+              <label htmlFor="user_name" className="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="user_name"
+                id="user_name"
+                aria-describedby="user_name"
+                placeholder="Enter Username"
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* email */}
+            <div className="col-6 mb-3" ref={addToRefs}>
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="email"
+                id="email"
+                aria-describedby="email"
+                placeholder="Enter email"
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
-          {/* user_name */}
-          <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="user_name" className="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="user_name"
-              id="user_name"
-              aria-describedby="user_name"
-              placeholder="Enter Username"
-              onChange={handleChange}
-            />
-          </div>
+          <div className="row">
+            {/* password */}
+            <div className="col-6 mb-3" ref={addToRefs}>
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                id="password"
+                aria-describedby="password"
+                placeholder="Enter password"
+                onChange={handleChange}
+              />
+            </div>
 
-          {/* email */}
-          <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="email"
-              id="email"
-              aria-describedby="email"
-              placeholder="Enter email"
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* password */}
-          <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              id="password"
-              aria-describedby="password"
-              placeholder="Enter password"
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* confirm password */}
-          <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="confirm_password" className="form-label">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              name="confirm_password"
-              id="confirm_password"
-              aria-describedby="confirm_password"
-              placeholder="Enter Confirm Password"
-              onChange={handleChange}
-            />
+            {/* confirm password */}
+            <div className="col-6 mb-3" ref={addToRefs}>
+              <label htmlFor="confirm_password" className="form-label">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                name="confirm_password"
+                id="confirm_password"
+                aria-describedby="confirm_password"
+                placeholder="Enter Confirm Password"
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
           <div className="row mx-0">
@@ -195,7 +201,7 @@ const Register = ({ errorHandler }) => {
             >
               Submit
             </button>
-            <div className="col-5 my-auto ms-auto" ref={addToRefs}>
+            <div className="col-5 my-auto ms-auto text-end p-0" ref={addToRefs}>
               Already registered?
               <span
                 className="text-primary fw-bold"
