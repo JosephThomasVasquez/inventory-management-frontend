@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../utils/api";
 import gsap from "gsap";
 
 const Register = () => {
@@ -33,14 +34,18 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const submitRegistration = () => {
+    const submitRegistration = async () => {
       const abortController = new AbortController();
 
       try {
+        const response = await registerUser(formData, abortController.abort());
+        setFormData(response);
       } catch (error) {
         console.log(error);
       }
     };
+
+    submitRegistration();
   };
 
   useEffect(() => {
