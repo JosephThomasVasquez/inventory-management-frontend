@@ -52,6 +52,7 @@ const ItemForm = ({ category }) => {
   const handleGoBack = () => {
     navigate(-1);
   };
+
   return (
     <div className="container">
       <div className="row my-auto">

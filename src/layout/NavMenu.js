@@ -41,14 +41,11 @@ const NavMenu = () => {
             </li>
 
             <li className="nav-item">
-              <a
-                className="nav-link disabled"
-                href="#"
-                tabIndex="-1"
-                aria-disabled="true"
-              >
-                Disabled
-              </a>
+              <Link to="/categories" className="nav-link-item">
+                <div className="nav-link" href="#">
+                  Add Item
+                </div>
+              </Link>
             </li>
           </ul>
           <form className="d-flex">
@@ -76,22 +73,22 @@ const NavMenu = () => {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Login
-                  </a>
+                  <Link to="/login" className="dropdown-item">
+                    <div className="">Login</div>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Logout
-                  </a>
+                  <Link to="/register" className="dropdown-item">
+                    <div className="">Register</div>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Sign Up
-                  </a>
+                  <Link to="/login" className="dropdown-item">
+                    <div className="">Logout</div>
+                  </Link>
                 </li>
               </ul>
             </li>
