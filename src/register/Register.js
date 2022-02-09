@@ -23,6 +23,26 @@ const Register = () => {
     if (e && !formRefs.current.includes(e)) formRefs.current.push(e);
   };
 
+  const handleChange = ({ target }) => {
+    console.log("target:", target);
+
+    setFormData({ ...formData, [target.name]: target.value });
+  };
+
+  // Send POST request with formData
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const submitRegistration = () => {
+      const abortController = new AbortController();
+
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  };
+
   useEffect(() => {
     gsap.fromTo(
       formRefs.current,
@@ -66,18 +86,36 @@ const Register = () => {
       </div>
 
       <div className="row">
-        <form className="col-6">
-          {/* email */}
+        <form className="col-6" onSubmit={handleSubmit}>
+          {/* first_name */}
           <div className="mb-3" ref={addToRefs}>
-            <label htmlFor="email" className="form-label">
-              Email
+            <label htmlFor="first_name" className="form-label">
+              First Name
             </label>
             <input
               type="text"
               className="form-control"
-              id="email"
-              aria-describedby="email"
-              placeholder="Enter email"
+              name="first_name"
+              id="first_name"
+              aria-describedby="first_name"
+              placeholder="Enter First Name"
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* last_name */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="last_name" className="form-label">
+              Last Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              name="last_name"
+              id="last_name"
+              aria-describedby="last_name"
+              placeholder="Enter Last Name"
+              onChange={handleChange}
             />
           </div>
 
@@ -89,9 +127,27 @@ const Register = () => {
             <input
               type="text"
               className="form-control"
+              name="user_name"
               id="user_name"
               aria-describedby="user_name"
               placeholder="Enter Username"
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* email */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              name="email"
+              id="email"
+              aria-describedby="email"
+              placeholder="Enter email"
+              onChange={handleChange}
             />
           </div>
 
@@ -103,9 +159,11 @@ const Register = () => {
             <input
               type="password"
               className="form-control"
+              name="password"
               id="password"
               aria-describedby="password"
               placeholder="Enter password"
+              onChange={handleChange}
             />
           </div>
 
@@ -115,11 +173,13 @@ const Register = () => {
               Confirm Password
             </label>
             <input
-              type="confirm_password"
+              type="password"
               className="form-control"
+              name="confirm_password"
               id="confirm_password"
               aria-describedby="confirm_password"
               placeholder="Enter Confirm Password"
+              onChange={handleChange}
             />
           </div>
 
