@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../utils/api";
 import gsap from "gsap";
 
-const Register = () => {
+const Register = ({ errorHandler }) => {
   const navigate = useNavigate();
 
   const initialFormData = {
     first_name: "",
     last_name: "",
     user_name: "",
-    password: "",
     email: "",
-    token: null,
+    password: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -25,8 +24,6 @@ const Register = () => {
   };
 
   const handleChange = ({ target }) => {
-    console.log("target:", target);
-
     setFormData({ ...formData, [target.name]: target.value });
   };
 
@@ -40,8 +37,10 @@ const Register = () => {
       try {
         const response = await registerUser(formData, abortController.abort());
         setFormData(response);
+        errorHandler("clearErrors");
       } catch (error) {
-        console.log(error);
+        error && errorHandler(error);
+        // console.log(error);
       }
     };
 
