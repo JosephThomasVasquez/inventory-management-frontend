@@ -38,6 +38,8 @@ const Register = ({ errorHandler }) => {
         const response = await registerUser(formData, abortController.abort());
         setFormData(response);
         errorHandler("clearErrors");
+
+        navigate("/dashboard");
       } catch (error) {
         error && errorHandler(error);
         // console.log(error);
