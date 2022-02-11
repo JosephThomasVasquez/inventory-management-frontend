@@ -17,6 +17,7 @@ code {
     monospace;
 }
 
+/* Checkbox */
 input[type="checkbox"] {
   border-color: var(--primary-color);
   outline: 0 none;
@@ -24,6 +25,22 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: var(--primary-color);
+}
+
+/* Select and Options */
+
+select {
+  color: var(--primary-color) !important;
+  font-weight: bold !important;
+}
+
+select option:hover {
+  background-color: var(--primary-color) !important;
+}
+
+select option:checked {
+  background-color: var(--primary-color) !important;
+  color: white !important;
 }
 
 textarea:focus,
@@ -100,10 +117,15 @@ input[type="checkbox"]:focus,
 }
 
 .scroll-list {
-  height: 80px;
-  overflow: hidden;
-  overflow-y: scroll;
+  /* height: 80px; */
+  /* overflow: hidden;
+  overflow-y: scroll; */
+  width: 100%;
   border: 2px solid var(--primary-color);
+}
+
+.option {
+  background: purple;
 }
 
 .text-primary {

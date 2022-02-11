@@ -31,6 +31,7 @@ const ItemForm = ({ categories, errorHandler }) => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [categorySelected, setCategorySelected] = useState(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -77,18 +78,17 @@ const ItemForm = ({ categories, errorHandler }) => {
     submitRegistration();
   };
 
-  const handleSelectCategory = (id) => {
-    setFormData({ ...formData, category_id: id });
+  const handleSelectCategory = ({ target }) => {
+    console.log("target", target.options[target.selectedIndex].text);
+    // options[sel.selectedIndex].text;
+    setCategorySelected(target.value);
+    setFormData({ ...formData, category_id: target.value });
   };
 
-  const loadCategories = categories?.map((category) => (
-    <li
-      key={category.id}
-      className="list-group-item"
-      onClick={() => handleSelectCategory(category.id)}
-    >
-      {category.name}
-    </li>
+  const loadCategories = categories?.map(({ name, id }) => (
+    <option key={id} name={name} className="list-group-item" value={id}>
+      {name}
+    </option>
   ));
 
   const handleGoBack = () => {
@@ -118,16 +118,19 @@ const ItemForm = ({ categories, errorHandler }) => {
 
       <form className="col-6" onSubmit={handleSubmit}>
         {/* Categories Dropdown */}
-        <div className="col-6 my-3" ref={addToRefs}>
-          <label htmlFor="category_id" className="form-label">
-            Category
-          </label>
-          <ul className="list-group scroll-list">
-            <li className="list-group-item" aria-current="true">
-              An active item
-            </li>
-            {loadCategories}
-          </ul>
+        <div className="row">
+          <div className="col-6 my-3" ref={addToRefs}>
+            <label htmlFor="category_id" className="form-label">
+              Category
+            </label>
+            <select
+              className="form-select form-select-sm py-2"
+              aria-label="Select Category"
+              onChange={handleSelectCategory}
+            >
+              {loadCategories}
+            </select>
+          </div>
         </div>
 
         {/* Name */}
