@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { addItem } from "../utils/api";
 import gsap from "gsap";
 
-const ItemForm = ({ category }) => {
+const ItemForm = ({ categories, errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
   console.log(location);
+  console.log(categories);
 
   const formRefs = useRef([]);
   formRefs.current = [];
@@ -24,7 +26,8 @@ const ItemForm = ({ category }) => {
     price: 0,
     quantity_in_stock: 0,
     weight_in_lbs: 0,
-    photos: [],
+    category_id: "",
+    // photos: [],
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -49,6 +52,45 @@ const ItemForm = ({ category }) => {
     );
   }, []);
 
+  const handleChange = ({ target }) => {
+    setFormData({ ...formData, [target.name]: target.value });
+  };
+
+  // Send POST request with formData
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const submitRegistration = async () => {
+      const abortController = new AbortController();
+
+      try {
+        const response = await addItem(formData, abortController.abort());
+        setFormData(response);
+        errorHandler("clearErrors");
+
+        navigate("/dashboard");
+      } catch (error) {
+        error && errorHandler(error);
+      }
+    };
+
+    submitRegistration();
+  };
+
+  const handleSelectCategory = (id) => {
+    setFormData({ ...formData, category_id: id });
+  };
+
+  const loadCategories = categories?.map((category) => (
+    <li
+      key={category.id}
+      className="list-group-item"
+      onClick={() => handleSelectCategory(category.id)}
+    >
+      {category.name}
+    </li>
+  ));
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -62,6 +104,7 @@ const ItemForm = ({ category }) => {
         <div className="col-9 h4 my-auto text-primary">
           {location.state.name}
         </div>
+        {/* <div>{JSON.stringify(formData)}</div> */}
         <div className="col-1 button-back">
           <button
             type="button"
@@ -73,7 +116,20 @@ const ItemForm = ({ category }) => {
         </div>
       </div>
 
-      <form className="col-6">
+      <form className="col-6" onSubmit={handleSubmit}>
+        {/* Categories Dropdown */}
+        <div className="col-6 my-3" ref={addToRefs}>
+          <label htmlFor="category_id" className="form-label">
+            Category
+          </label>
+          <ul className="list-group scroll-list">
+            <li className="list-group-item" aria-current="true">
+              An active item
+            </li>
+            {loadCategories}
+          </ul>
+        </div>
+
         {/* Name */}
         <div className="mb-3" ref={addToRefs}>
           <label htmlFor="name" className="form-label">
@@ -81,10 +137,13 @@ const ItemForm = ({ category }) => {
           </label>
           <input
             type="text"
+            name="name"
             className="form-control"
             id="name"
             aria-describedby="name"
             placeholder="Enter name of the item"
+            value={formData.name}
+            onChange={handleChange}
           />
         </div>
 
@@ -95,10 +154,13 @@ const ItemForm = ({ category }) => {
           </label>
           <input
             type="text"
+            name="model"
             className="form-control"
             id="model"
             aria-describedby="model"
             placeholder="Enter model of the item"
+            value={formData.model}
+            onChange={handleChange}
           />
         </div>
 
@@ -107,7 +169,14 @@ const ItemForm = ({ category }) => {
           <label htmlFor="description" className="form-label">
             Item Description
           </label>
-          <textarea type="text" className="form-control" id="description" />
+          <textarea
+            type="text"
+            name="description"
+            className="form-control"
+            id="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
         </div>
 
         {/* Release Date */}
@@ -117,10 +186,13 @@ const ItemForm = ({ category }) => {
           </label>
           <input
             type="date"
+            name="release_date"
             className="form-control"
             id="release_date"
             aria-describedby="release_date"
             placeholder="Enter release date of the item"
+            value={formData.release_date}
+            onChange={handleChange}
           />
         </div>
 
@@ -131,10 +203,13 @@ const ItemForm = ({ category }) => {
           </label>
           <input
             type="text"
+            name="sku"
             className="form-control"
             id="sku"
             aria-describedby="sku"
             placeholder="Enter a Sku or Product Number"
+            value={formData.sku}
+            onChange={handleChange}
           />
         </div>
 
@@ -145,12 +220,15 @@ const ItemForm = ({ category }) => {
           </label>
           <input
             type="number"
+            name="price"
             min="0"
             step="any"
             className="form-control"
             id="price"
             aria-describedby="price"
             placeholder="Enter name of the item"
+            value={formData.price}
+            onChange={handleChange}
           />
         </div>
 
@@ -161,12 +239,34 @@ const ItemForm = ({ category }) => {
           </label>
           <input
             type="number"
+            name="quantity_in_stock"
             min="0"
             step="any"
             className="form-control"
             id="quantity_in_stock"
             aria-describedby="quantity_in_stock"
             placeholder="Enter quanttiy in stock"
+            value={formData.quantity_in_stock}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* In Stock */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="weight_in_lbs" className="form-label">
+            Weight in lbs.
+          </label>
+          <input
+            type="number"
+            name="weight_in_lbs"
+            min="0"
+            step="any"
+            className="form-control"
+            id="weight_in_lbs"
+            aria-describedby="weight_in_lbs"
+            placeholder="Enter weight in lbs."
+            value={formData.weight_in_lbs}
+            onChange={handleChange}
           />
         </div>
 
@@ -186,6 +286,7 @@ const ItemForm = ({ category }) => {
           Submit
         </button>
       </form>
+      {JSON.stringify(formData)}
     </div>
   );
 };

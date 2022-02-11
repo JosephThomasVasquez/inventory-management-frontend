@@ -67,3 +67,27 @@ export async function listItems(categoryId, signal) {
   const url = new URL(`${API_BASE_URL}/api/categories/${categoryId}/items`);
   return await fetchJson(url, { headers, signal }, []);
 }
+
+export async function readItem(itemId, signal) {
+  const url = new URL(`${API_BASE_URL}/api/items/${itemId}`);
+
+  const options = {
+    method: "GET",
+    headers,
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}
+
+// Add new item to Database
+export async function addItem(item, signal) {
+  const url = new URL(`${API_BASE_URL}/api/items`);
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: item }),
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}

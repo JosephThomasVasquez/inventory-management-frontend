@@ -99,6 +99,13 @@ input[type="checkbox"]:focus,
   background: var(--primary-color) !important;
 }
 
+.scroll-list {
+  height: 80px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: 2px solid var(--primary-color);
+}
+
 .text-primary {
   color: var(--primary-color) !important;
 }

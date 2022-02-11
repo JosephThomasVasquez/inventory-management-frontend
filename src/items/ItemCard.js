@@ -9,10 +9,7 @@ const ItemCard = ({ item }) => {
       </div>
       <div className="card-body">
         <p className="card-text item-text">{item.description}</p>
-        <Link
-          className="col-4 btn btn-primary"
-          to={`/categories/${item.category_id}/items`}
-        >
+        <Link className="col-4 btn btn-primary" to={`/items/${item.id}`}>
           <div className="">View</div>
         </Link>
       </div>

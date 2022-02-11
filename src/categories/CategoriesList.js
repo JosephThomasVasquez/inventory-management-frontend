@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
 import gsap from "gsap";
 
-const CategoriesList = () => {
+const CategoriesList = ({ categories }) => {
   const navigate = useNavigate();
 
   const categoryRefs = useRef([]);
@@ -13,16 +13,6 @@ const CategoriesList = () => {
   const addToRefs = (e) => {
     if (e && !categoryRefs.current.includes(e)) categoryRefs.current.push(e);
   };
-
-  const [categories, setCategories] = useState(null);
-  const [errors, setErrors] = useState(null);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-    setCategories(null);
-    listCategories(abortController.signal).then(setCategories).catch(setErrors);
-    return () => abortController.abort();
-  }, []);
 
   useEffect(() => {
     gsap.fromTo(

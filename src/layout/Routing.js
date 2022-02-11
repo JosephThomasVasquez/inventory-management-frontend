@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { listCategories } from "../utils/api";
 import Layout from "./Layout";
 import Dashboard from "../dashboard/Dashboard";
 import CategoriesList from "../categories/CategoriesList";
 import ItemsList from "../items/ItemsList";
+import ItemDetails from "../items/ItemDetails";
 import ItemForm from "../items/ItemForm";
 import Login from "../login/Login";
 import Register from "../register/Register";
@@ -11,6 +13,7 @@ import ErrorAlert from "../errors/ErrorAlert";
 
 const Routing = () => {
   const [errors, setErrors] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   const errorHandler = (errorFound = null) => {
     console.log("error", errorFound);
@@ -20,6 +23,15 @@ const Routing = () => {
       setErrors(null);
     }
   };
+
+  const loadCategories = () => {
+    const abortController = new AbortController();
+    setCategories(null);
+    listCategories(abortController.signal).then(setCategories).catch(setErrors);
+    return () => abortController.abort();
+  };
+
+  useEffect(loadCategories, []);
 
   return (
     <>
@@ -37,7 +49,12 @@ const Routing = () => {
         <Route
           exact
           path="/categories"
-          element={<CategoriesList errorHandler={errorHandler} />}
+          element={
+            <CategoriesList
+              categories={categories}
+              errorHandler={errorHandler}
+            />
+          }
         />
 
         <Route
@@ -45,6 +62,8 @@ const Routing = () => {
           path="/categories/:categoryId/items"
           element={<ItemsList />}
         />
+
+        <Route exact path="/items/:itemId" element={<ItemDetails />} />
 
         <Route
           exact
