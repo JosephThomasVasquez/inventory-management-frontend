@@ -68,7 +68,9 @@ const Routing = () => {
         <Route
           exact
           path="/categories/:categoryId/create"
-          element={<ItemForm errorHandler={errorHandler} />}
+          element={
+            <ItemForm categories={categories} errorHandler={errorHandler} />
+          }
         />
 
         <Route
