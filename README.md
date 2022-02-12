@@ -24,6 +24,7 @@ Back-end is complete using a error handling while alerting the user of any error
 - React Router 6
 - Bootstrap 5
 - GreenSock
+- Dayjs
 - Javascript
 - HTML
 - CSS
