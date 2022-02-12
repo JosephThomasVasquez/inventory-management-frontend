@@ -57,6 +57,19 @@ export async function listCategories(params, signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
+// Add new item to Database
+export async function createCategory(category, signal) {
+  const url = new URL(`${API_BASE_URL}/api/categories`);
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: category }),
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}
+
 // -----------------------------------------------------------------------------------------------------------------------
 // -------ITEMS-----------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------

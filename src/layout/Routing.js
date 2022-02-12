@@ -4,6 +4,7 @@ import { listCategories } from "../utils/api";
 import Layout from "./Layout";
 import Dashboard from "../dashboard/Dashboard";
 import CategoriesList from "../categories/CategoriesList";
+import CategoryForm from "../categories/CategoryForm";
 import ItemsList from "../items/ItemsList";
 import ItemDetails from "../items/ItemDetails";
 import ItemForm from "../items/ItemForm";
@@ -56,6 +57,14 @@ const Routing = () => {
               categories={categories}
               errorHandler={errorHandler}
             />
+          }
+        />
+
+        <Route
+          exact
+          path="/categories/create"
+          element={
+            <CategoryForm categories={categories} errorHandler={errorHandler} />
           }
         />
 

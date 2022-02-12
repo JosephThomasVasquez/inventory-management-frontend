@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = ({ categories }) => {
   return (
@@ -14,6 +15,11 @@ const Dashboard = ({ categories }) => {
           Categories:
           <span className="col"> {categories ? categories.length : null}</span>
         </div>
+      </div>
+      <div className="row my-3">
+        <Link className="col-2 btn btn-primary" to={`/categories/create`}>
+          <div className="">Create Category</div>
+        </Link>
       </div>
     </div>
   );
