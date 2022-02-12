@@ -102,7 +102,7 @@ const ItemForm = ({ categories, errorHandler }) => {
           <h2>
             Create Item
             <span className="">
-              <span className="h4"> > </span>
+              <span> &#8594; </span>
               <span className="text-primary h4">
                 {categorySelected && categories[categorySelected - 1].name}
               </span>
