@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { listItems } from "../utils/api";
 import ItemCard from "./ItemCard";
+import ItemsTable from "./ItemsTable";
 import gsap from "gsap";
 
 const ItemsList = () => {
@@ -12,6 +13,7 @@ const ItemsList = () => {
   itemRefs.current = [];
 
   const [items, setItems] = useState();
+  const [tableView, setTableView] = useState(false);
   const [errors, setErrors] = useState(null);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const ItemsList = () => {
         ease: "back.out(2.5)",
       }
     );
-  }, [items]);
+  }, [items, tableView]);
 
   const mapItems = () => {
     return items.map((item) => (
@@ -55,6 +57,10 @@ const ItemsList = () => {
     ));
   };
 
+  const handleSwitch = ({ target }) => {
+    setTableView(!tableView);
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -62,10 +68,26 @@ const ItemsList = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col">
+        <div className="col-1">
           <h2>Items</h2>
         </div>
-        <div className="col-1 button-back">
+        <div className="col my-auto">
+          <div className="form-check form-switch">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckDefault"
+              onChange={handleSwitch}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >
+              Table View
+            </label>
+          </div>
+        </div>
+        <div className="col-1 my-auto button-back">
           <button
             type="button"
             className="btn btn-outline-primary"
@@ -75,8 +97,12 @@ const ItemsList = () => {
           </button>
         </div>
       </div>
-      <div className="col-3">{categoryId}</div>
-      <div className="row">{items && mapItems()}</div>
+      {/* <div className="col-3">{categoryId}</div> */}
+      {tableView ? (
+        <ItemsTable items={items} />
+      ) : (
+        <div className="row">{items && mapItems()}</div>
+      )}
     </div>
   );
 };

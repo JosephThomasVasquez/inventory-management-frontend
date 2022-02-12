@@ -108,7 +108,8 @@ const ItemDetails = () => {
             </div>
             {/* Model */}
             <div className="col-2 mb-3 h6" ref={addToRefs}>
-              <span className="text-primary">Model:</span> {itemDetails.model}
+              <span className="text-primary">Model:</span>{" "}
+              {itemDetails.model ? itemDetails.model : "N/A"}
             </div>
             {/* Quantity */}
             <div className="col-2 mb-3 h6" ref={addToRefs}>
