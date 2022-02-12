@@ -111,7 +111,7 @@ const ItemsList = () => {
           </button>
         </div>
       </div>
-      {/* <div className="col-3">{categoryId}</div> */}
+
       {tableView ? (
         <ItemsTable items={items} />
       ) : (

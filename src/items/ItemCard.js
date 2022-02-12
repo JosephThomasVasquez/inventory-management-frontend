@@ -5,10 +5,18 @@ const ItemCard = ({ item }) => {
   return (
     <div className="card shadow my-2 item-card">
       <div className="card-header py-0">
-        <div className="h6 my-1">{item.name}</div>
+        <div className="h6 my-1">
+          {item.name.length > 32
+            ? `${item.name.substring(0, 32)} ...`
+            : item.name}
+        </div>
       </div>
       <div className="card-body">
-        <p className="card-text item-text">{item.description}</p>
+        <p className="card-text item-text">
+          {item.description.length > 100
+            ? `${item.description.substring(0, 100)} ...`
+            : item.description}
+        </p>
         <Link className="col-4 btn btn-primary" to={`/items/${item.id}`}>
           <div className="">View</div>
         </Link>

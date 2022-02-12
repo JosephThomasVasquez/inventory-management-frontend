@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 import gsap from "gsap";
 
 const ItemsTable = ({ items }) => {
@@ -80,11 +81,19 @@ const ItemsTable = ({ items }) => {
       return (
         <tr scope="row" key={id} ref={addToRefs}>
           <td colSpan="1">{id}</td>
-          <td colSpan="1">{sku}</td>
-          <td colSpan="1">{name}</td>
-          <td colSpan="1">{model}</td>
-          <td colSpan="1">{description}</td>
-          <td colSpan="1">{release_date}</td>
+          <td colSpan="1">{sku ? sku : "..."}</td>
+          <td colSpan="1">
+            {name.length > 32 ? `${name.substring(0, 32)} ...` : name}
+          </td>
+          <td colSpan="1">{model ? model : "..."}</td>
+          <td colSpan="1">
+            {description.length > 32
+              ? `${description.substring(0, 32)} ...`
+              : description}
+          </td>
+          <td colSpan="1">
+            {release_date ? dayjs(release_date).format("MMM DD, YYYY") : "N/A"}
+          </td>
           <td colSpan="1">${price}</td>
           <td colSpan="1">{quantity_in_stock}</td>
           <td colSpan="1">{weight_in_lbs} lbs.</td>

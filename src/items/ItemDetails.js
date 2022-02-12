@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { readItem } from "../utils/api";
+import dayjs from "dayjs";
 import gsap from "gsap";
 
 const ItemDetails = () => {
@@ -48,20 +49,12 @@ const ItemDetails = () => {
     );
   }, [itemDetails]);
 
-  const formatDate = () => {
+  const handleDate = () => {
     if (!itemDetails.release_date) {
       return "N/A";
     }
 
-    const formatDate = itemDetails.release_date?.split("T")[0];
-
-    var date = new Date(formatDate);
-    if (!isNaN(date.getTime())) {
-      // Months use 0 index.
-      return `${date.getMonth() + 1}/${
-        date.getDate() + 1
-      }/${date.getFullYear()}`;
-    }
+    return dayjs(itemDetails.release_date).format("MMM DD, YYYY");
   };
 
   const handleGoBack = () => {
@@ -104,7 +97,7 @@ const ItemDetails = () => {
           <div className="row">
             {/* Price */}
             <div className="col-2 mb-1 h6" ref={addToRefs}>
-              <span className="text-primary">Release Date:</span> {formatDate()}
+              <span className="text-primary">Release Date:</span> {handleDate()}
             </div>
             {/* Model */}
             <div className="col-2 mb-3 h6" ref={addToRefs}>
