@@ -5,7 +5,7 @@ const CategoryCard = ({ category }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/categories/${category.id}/create`, { state: category });
+    navigate(`/items/create`, { state: category });
   };
 
   return (

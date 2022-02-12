@@ -61,6 +61,10 @@ const ItemsList = () => {
     setTableView(!tableView);
   };
 
+  const handleClick = () => {
+    navigate(`/items/create`);
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -87,6 +91,7 @@ const ItemsList = () => {
             </label>
           </div>
         </div>
+
         <div className="col-1 my-auto button-back">
           <button
             type="button"
@@ -94,6 +99,15 @@ const ItemsList = () => {
             onClick={handleGoBack}
           >
             Back
+          </button>
+        </div>
+
+        <div className="row">
+          <button
+            className="col-1 btn btn-primary my-1 ms-3"
+            onClick={handleClick}
+          >
+            <div className="">Add Item</div>
           </button>
         </div>
       </div>

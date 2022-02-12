@@ -98,13 +98,18 @@ const ItemForm = ({ categories, errorHandler }) => {
   return (
     <div className="container">
       <div className="row my-auto">
-        <div className="col-2">
-          <h2>Create Item</h2>
+        <div className="col-11">
+          <h2>
+            Create Item
+            <span className="">
+              <span className="h4"> > </span>
+              <span className="text-primary h4">
+                {categorySelected && categories[categorySelected - 1].name}
+              </span>
+            </span>
+          </h2>
         </div>
-        <div className="col-9 h4 my-auto text-primary">
-          {location.state.name}
-        </div>
-        {/* <div>{JSON.stringify(formData)}</div> */}
+
         <div className="col-1 button-back">
           <button
             type="button"
@@ -289,7 +294,6 @@ const ItemForm = ({ categories, errorHandler }) => {
           Submit
         </button>
       </form>
-      {JSON.stringify(formData)}
     </div>
   );
 };

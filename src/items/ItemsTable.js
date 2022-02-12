@@ -31,7 +31,7 @@ const ItemsTable = ({ items }) => {
     trimHeaders.push("Details");
 
     const values = trimHeaders.map((head) => (
-      <th scope="col" key={head}>
+      <th scope="col" key={head} className="text-primary">
         {head.toUpperCase()}
       </th>
     ));
