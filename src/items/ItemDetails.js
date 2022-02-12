@@ -48,6 +48,22 @@ const ItemDetails = () => {
     );
   }, [itemDetails]);
 
+  const formatDate = () => {
+    if (!itemDetails.release_date) {
+      return "N/A";
+    }
+
+    const formatDate = itemDetails.release_date?.split("T")[0];
+
+    var date = new Date(formatDate);
+    if (!isNaN(date.getTime())) {
+      // Months use 0 index.
+      return `${date.getMonth() + 1}/${
+        date.getDate() + 1
+      }/${date.getFullYear()}`;
+    }
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -88,8 +104,7 @@ const ItemDetails = () => {
           <div className="row">
             {/* Price */}
             <div className="col-2 mb-1 h6" ref={addToRefs}>
-              <span className="text-primary">Release Date:</span>{" "}
-              {itemDetails.release_date}
+              <span className="text-primary">Release Date:</span> {formatDate()}
             </div>
             {/* Model */}
             <div className="col-2 mb-3 h6" ref={addToRefs}>
