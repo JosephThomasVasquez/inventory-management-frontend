@@ -41,7 +41,9 @@ const Routing = () => {
         <Route
           exact
           path="/dashboard"
-          element={<Dashboard errorHandler={errorHandler} />}
+          element={
+            <Dashboard categories={categories} errorHandler={errorHandler} />
+          }
         />
 
         <Route path="/" element={<Navigate replace to="/dashboard" />} />
