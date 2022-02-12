@@ -8,8 +8,6 @@ const ItemsTable = ({ items }) => {
   itemRefs.current = [];
 
   const tableHeaders = () => {
-    // console.log(items);
-
     let headers = Object.keys(items[0]);
 
     const renameHeaders = () => {
@@ -26,8 +24,6 @@ const ItemsTable = ({ items }) => {
 
     renameHeaders();
 
-    console.log("headers", headers);
-
     const trimHeaders = headers.splice(0, headers.length - 3);
     trimHeaders.push("Details");
 
@@ -36,7 +32,7 @@ const ItemsTable = ({ items }) => {
         {head.toUpperCase()}
       </th>
     ));
-    // console.log("values", values);
+
     return values;
   };
 

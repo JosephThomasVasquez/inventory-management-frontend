@@ -22,8 +22,10 @@ const CategoryCard = ({ category }) => {
         >
           <div className="">Items</div>
         </Link>
-        <button className="col-2 btn btn-primary ms-3" onClick={handleClick}>
-          <div className="">Add Item</div>
+        <button className="col btn btn-primary ms-3" onClick={handleClick}>
+          <div className="">
+            <i className="fa fa-plus"></i> Add Item
+          </div>
         </button>
       </div>
     </div>

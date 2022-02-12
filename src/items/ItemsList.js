@@ -107,7 +107,9 @@ const ItemsList = () => {
             className="col-1 btn btn-primary my-1 ms-3"
             onClick={handleClick}
           >
-            <div className="">Add Item</div>
+            <div className="">
+              <i className="fa fa-plus"></i> Add Item
+            </div>
           </button>
         </div>
       </div>

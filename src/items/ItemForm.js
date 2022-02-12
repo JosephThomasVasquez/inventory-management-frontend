@@ -55,6 +55,10 @@ const ItemForm = ({ categories, errorHandler }) => {
     );
   }, []);
 
+  useEffect(() => {
+    setCategorySelected(formData.category_id);
+  }, [categories]);
+
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
   };
@@ -106,7 +110,7 @@ const ItemForm = ({ categories, errorHandler }) => {
             <span className="">
               <span> &#8594; </span>
               <span className="text-primary h4">
-                {categorySelected && categories[categorySelected - 1].name}
+                {categories ? categories[categorySelected - 1]?.name : null}
               </span>
             </span>
           </h2>
@@ -122,180 +126,181 @@ const ItemForm = ({ categories, errorHandler }) => {
           </button>
         </div>
       </div>
-
-      <form className="col-6" onSubmit={handleSubmit}>
-        {/* Categories Dropdown */}
-        <div className="row">
-          <div className="col-6 my-3" ref={addToRefs}>
-            <label htmlFor="category_id" className="form-label">
-              Category
-            </label>
-            <select
-              className="form-select form-select-sm py-2"
-              aria-label="Select Category"
-              onChange={handleSelectCategory}
-            >
-              {loadCategories}
-            </select>
+      {formData && (
+        <form className="col-6" onSubmit={handleSubmit}>
+          {/* Categories Dropdown */}
+          <div className="row">
+            <div className="col-6 my-3" ref={addToRefs}>
+              <label htmlFor="category_id" className="form-label">
+                Category
+              </label>
+              <select
+                className="form-select form-select-sm py-2"
+                aria-label="Select Category"
+                onChange={handleSelectCategory}
+              >
+                {loadCategories}
+              </select>
+            </div>
           </div>
-        </div>
 
-        {/* Name */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="name" className="form-label">
-            Item Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            id="name"
-            aria-describedby="name"
-            placeholder="Enter name of the item"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
+          {/* Name */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="name" className="form-label">
+              Item Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              id="name"
+              aria-describedby="name"
+              placeholder="Enter name of the item"
+              value={formData?.name}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* Model */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="model" className="form-label">
-            Item Model
-          </label>
-          <input
-            type="text"
-            name="model"
-            className="form-control"
-            id="model"
-            aria-describedby="model"
-            placeholder="Enter model of the item"
-            value={formData.model}
-            onChange={handleChange}
-          />
-        </div>
+          {/* Model */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="model" className="form-label">
+              Item Model
+            </label>
+            <input
+              type="text"
+              name="model"
+              className="form-control"
+              id="model"
+              aria-describedby="model"
+              placeholder="Enter model of the item"
+              value={formData?.model}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* Description */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="description" className="form-label">
-            Item Description
-          </label>
-          <textarea
-            type="text"
-            name="description"
-            className="form-control"
-            id="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </div>
+          {/* Description */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="description" className="form-label">
+              Item Description
+            </label>
+            <textarea
+              type="text"
+              name="description"
+              className="form-control"
+              id="description"
+              value={formData?.description}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* Release Date */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="release_date" className="form-label">
-            Release Date
-          </label>
-          <input
-            type="date"
-            name="release_date"
-            className="form-control"
-            id="release_date"
-            aria-describedby="release_date"
-            placeholder="Enter release date of the item"
-            value={formData.release_date}
-            onChange={handleChange}
-          />
-        </div>
+          {/* Release Date */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="release_date" className="form-label">
+              Release Date
+            </label>
+            <input
+              type="date"
+              name="release_date"
+              className="form-control"
+              id="release_date"
+              aria-describedby="release_date"
+              placeholder="Enter release date of the item"
+              value={formData?.release_date}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* Sku / Product Number */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="sku" className="form-label">
-            Sku / Product Number
-          </label>
-          <input
-            type="text"
-            name="sku"
-            className="form-control"
-            id="sku"
-            aria-describedby="sku"
-            placeholder="Enter a Sku or Product Number"
-            value={formData.sku}
-            onChange={handleChange}
-          />
-        </div>
+          {/* Sku / Product Number */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="sku" className="form-label">
+              Sku / Product Number
+            </label>
+            <input
+              type="text"
+              name="sku"
+              className="form-control"
+              id="sku"
+              aria-describedby="sku"
+              placeholder="Enter a Sku or Product Number"
+              value={formData?.sku}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* Price */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="price" className="form-label">
-            Item price
-          </label>
-          <input
-            type="number"
-            name="price"
-            min="0"
-            step="any"
-            className="form-control"
-            id="price"
-            aria-describedby="price"
-            placeholder="Enter name of the item"
-            value={formData.price}
-            onChange={handleChange}
-          />
-        </div>
+          {/* Price */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="price" className="form-label">
+              Item price
+            </label>
+            <input
+              type="number"
+              name="price"
+              min="0"
+              step="any"
+              className="form-control"
+              id="price"
+              aria-describedby="price"
+              placeholder="Enter name of the item"
+              value={formData?.price}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* In Stock */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="quantity_in_stock" className="form-label">
-            Quantity in stock
-          </label>
-          <input
-            type="number"
-            name="quantity_in_stock"
-            min="0"
-            step="any"
-            className="form-control"
-            id="quantity_in_stock"
-            aria-describedby="quantity_in_stock"
-            placeholder="Enter quanttiy in stock"
-            value={formData.quantity_in_stock}
-            onChange={handleChange}
-          />
-        </div>
+          {/* In Stock */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="quantity_in_stock" className="form-label">
+              Quantity in stock
+            </label>
+            <input
+              type="number"
+              name="quantity_in_stock"
+              min="0"
+              step="any"
+              className="form-control"
+              id="quantity_in_stock"
+              aria-describedby="quantity_in_stock"
+              placeholder="Enter quanttiy in stock"
+              value={formData?.quantity_in_stock}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* In Stock */}
-        <div className="mb-3" ref={addToRefs}>
-          <label htmlFor="weight_in_lbs" className="form-label">
-            Weight in lbs.
-          </label>
-          <input
-            type="number"
-            name="weight_in_lbs"
-            min="0"
-            step="any"
-            className="form-control"
-            id="weight_in_lbs"
-            aria-describedby="weight_in_lbs"
-            placeholder="Enter weight in lbs."
-            value={formData.weight_in_lbs}
-            onChange={handleChange}
-          />
-        </div>
+          {/* In Stock */}
+          <div className="mb-3" ref={addToRefs}>
+            <label htmlFor="weight_in_lbs" className="form-label">
+              Weight in lbs.
+            </label>
+            <input
+              type="number"
+              name="weight_in_lbs"
+              min="0"
+              step="any"
+              className="form-control"
+              id="weight_in_lbs"
+              aria-describedby="weight_in_lbs"
+              placeholder="Enter weight in lbs."
+              value={formData?.weight_in_lbs}
+              onChange={handleChange}
+            />
+          </div>
 
-        {/* Checkbox */}
-        <div className="mb-3 form-check" ref={addToRefs}>
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
-        </div>
+          {/* Checkbox */}
+          <div className="mb-3 form-check" ref={addToRefs}>
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="exampleCheck1"
+            />
+            <label className="form-check-label" htmlFor="exampleCheck1">
+              Check me out
+            </label>
+          </div>
 
-        <button type="submit" className="btn btn-primary" ref={addToRefs}>
-          Submit
-        </button>
-      </form>
+          <button type="submit" className="btn btn-primary" ref={addToRefs}>
+            Submit
+          </button>
+        </form>
+      )}
     </div>
   );
 };
