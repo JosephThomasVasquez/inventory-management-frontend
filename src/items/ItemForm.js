@@ -26,12 +26,14 @@ const ItemForm = ({ categories, errorHandler }) => {
     price: 0,
     quantity_in_stock: 0,
     weight_in_lbs: 0,
-    category_id: "",
+    category_id: 1,
     // photos: [],
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [categorySelected, setCategorySelected] = useState(null);
+  const [categorySelected, setCategorySelected] = useState(
+    initialFormData.category_id
+  );
 
   useEffect(() => {
     gsap.fromTo(

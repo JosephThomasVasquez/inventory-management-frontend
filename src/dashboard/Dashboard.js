@@ -11,10 +11,10 @@ const Dashboard = ({ categories }) => {
       </div>
 
       <div className="row">
-        <div className="col-2 btn btn-primary">
+        <Link className="col-2 btn btn-primary" to={`/categories`}>
           Categories:
           <span className="col"> {categories ? categories.length : null}</span>
-        </div>
+        </Link>
       </div>
       <div className="row my-3">
         <Link className="col-2 btn btn-primary" to={`/categories/create`}>
