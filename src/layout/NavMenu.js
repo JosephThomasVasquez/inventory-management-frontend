@@ -41,8 +41,8 @@ const NavMenu = () => {
             </li>
 
             <li className="nav-item">
-              <Link to="/categories" className="nav-link-item">
-                <div className="nav-link" href="#">
+              <Link to="/items/create" className="nav-link-item">
+                <div className="nav-link" href="/items/create">
                   Add Item
                 </div>
               </Link>

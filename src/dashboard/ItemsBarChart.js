@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ToolTip from "./ToolTip";
+import "./barChart.style.css";
 import * as d3 from "d3";
 
 const ItemsBarChart = ({ items }) => {
@@ -100,8 +101,8 @@ const ItemsBarChart = ({ items }) => {
   }, [items]);
 
   return (
-    <div>
-      <div>Items Chart</div>
+    <div className="row chart-body p-3">
+      <div>Item Quantities</div>
       <div>
         <svg
           ref={svgRef}
