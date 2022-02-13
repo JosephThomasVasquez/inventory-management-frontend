@@ -8,32 +8,34 @@ const ItemsTable = ({ items }) => {
   itemRefs.current = [];
 
   const tableHeaders = () => {
-    let headers = Object.keys(items[0]);
+    if (items.length > 0) {
+      let headers = Object.keys(items[0]);
 
-    const renameHeaders = () => {
-      headers.forEach((header, index) => {
-        if (header === "quantity_in_stock") {
-          headers[index] = "Stock";
-        }
+      const renameHeaders = () => {
+        headers.forEach((header, index) => {
+          if (header === "quantity_in_stock") {
+            headers[index] = "Stock";
+          }
 
-        if (header === "weight_in_lbs") {
-          headers[index] = "Weight";
-        }
-      });
-    };
+          if (header === "weight_in_lbs") {
+            headers[index] = "Weight";
+          }
+        });
+      };
 
-    renameHeaders();
+      renameHeaders();
 
-    const trimHeaders = headers.splice(0, headers.length - 3);
-    trimHeaders.push("Details");
+      const trimHeaders = headers.splice(0, headers.length - 3);
+      trimHeaders.push("Details");
 
-    const values = trimHeaders.map((head) => (
-      <th scope="col" key={head} className="text-primary">
-        {head.toUpperCase()}
-      </th>
-    ));
+      const values = trimHeaders.map((head) => (
+        <th scope="col" key={head} className="text-primary">
+          {head.toUpperCase()}
+        </th>
+      ));
 
-    return values;
+      return values;
+    }
   };
 
   const addToRefs = (e) => {

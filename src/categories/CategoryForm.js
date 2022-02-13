@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { createCategory } from "../utils/api";
 import gsap from "gsap";
 
-const CategoryForm = ({ categories }) => {
+const CategoryForm = ({ errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -47,7 +47,28 @@ const CategoryForm = ({ categories }) => {
     setFormData({ ...formData, [target.name]: target.value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const submitCategoryFormData = async () => {
+      const abortController = new AbortController();
+
+      try {
+        const response = await createCategory(
+          formData,
+          abortController.abort()
+        );
+        setFormData(response);
+        errorHandler("clearErrors");
+
+        navigate("/dashboard");
+      } catch (error) {
+        error && errorHandler(error);
+      }
+    };
+
+    submitCategoryFormData();
+  };
 
   const handleGoBack = () => {
     navigate(-1);
