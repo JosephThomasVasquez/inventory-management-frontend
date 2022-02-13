@@ -17,20 +17,11 @@ const CategoryForm = ({ categories }) => {
   };
 
   const initialFormData = {
-    sku: "",
     name: "",
-    model: "",
     description: "",
-    release_date: "",
-    price: 0,
-    quantity_in_stock: 0,
-    weight_in_lbs: 0,
-    category_id: "",
-    // photos: [],
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [categorySelected, setCategorySelected] = useState(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -56,6 +47,8 @@ const CategoryForm = ({ categories }) => {
     setFormData({ ...formData, [target.name]: target.value });
   };
 
+  const handleSubmit = () => {};
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -77,6 +70,56 @@ const CategoryForm = ({ categories }) => {
           </button>
         </div>
       </div>
+
+      <form className="col-6" onSubmit={handleSubmit}>
+        {/* Name */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="name" className="form-label">
+            Category Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            id="name"
+            aria-describedby="name"
+            placeholder="Enter name of the item"
+            value={formData?.name}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Description */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="description" className="form-label">
+            Category Description
+          </label>
+          <textarea
+            type="text"
+            name="description"
+            className="form-control"
+            id="description"
+            value={formData?.description}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="col-2 btn btn-primary me-3"
+          ref={addToRefs}
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          className="col-2 btn btn-secondary"
+          ref={addToRefs}
+          onClick={handleGoBack}
+        >
+          Cancel
+        </button>
+      </form>
     </div>
   );
 };

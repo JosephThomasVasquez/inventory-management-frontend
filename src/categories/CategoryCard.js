@@ -20,7 +20,9 @@ const CategoryCard = ({ category }) => {
           className="col-2 btn btn-primary"
           to={`/categories/${category.id}/items`}
         >
-          <div className="">Items</div>
+          <div className="">
+            <i class="fa-solid fa-boxes-stacked"></i> Items
+          </div>
         </Link>
         <button className="col btn btn-primary ms-3" onClick={handleClick}>
           <div className="">

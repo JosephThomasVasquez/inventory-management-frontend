@@ -12,7 +12,7 @@ const Dashboard = ({ categories }) => {
 
       <div className="row">
         <Link className="col-2 btn btn-primary" to={`/categories`}>
-          Categories:
+          <i className="fa-solid fa-list"></i> Categories:
           <span className="col"> {categories ? categories.length : null}</span>
         </Link>
       </div>

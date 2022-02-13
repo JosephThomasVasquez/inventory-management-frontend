@@ -55,8 +55,8 @@ const NavMenu = () => {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
+            <button className="col-2 btn btn-primary" type="submit">
+              <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 pe-4">
