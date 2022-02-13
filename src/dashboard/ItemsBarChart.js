@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ToolTip from "./ToolTip";
 import * as d3 from "d3";
 
 const ItemsBarChart = ({ items }) => {
@@ -37,7 +38,7 @@ const ItemsBarChart = ({ items }) => {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      x.domain(items.map((d) => d.name));
+      x.domain(items.map((d) => d.id));
       y.domain([0, d3.max(items, (d) => d.quantity_in_stock)]);
 
       g.append("g")
@@ -50,7 +51,7 @@ const ItemsBarChart = ({ items }) => {
         .call(d3.axisLeft(y).ticks(5))
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("y", 10)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
         .text("name");
@@ -59,16 +60,36 @@ const ItemsBarChart = ({ items }) => {
         .data(items)
         .join("rect")
         .attr("class", "bar")
-        .attr("x", function (d, i) {
-          return x(d.name);
-        })
-        .attr("y", function (d) {
-          return y(d.quantity_in_stock);
-        })
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .attr("name", (d) => d.name)
+        .attr("value", (d) => d.quantity_in_stock)
+        .attr("x", (d, i) => x(d.id))
+        .attr("y", (d) => y(d.quantity_in_stock))
         .attr("width", x.bandwidth())
         .attr("height", function (d) {
           return height - y(d.quantity_in_stock);
         });
+
+      function handleMouseOver(d, i) {
+        // console.log(e.target);
+        const xPos = parseFloat(d3.select(this).attr("x")) + x.bandwidth() * 2;
+
+        d3.select(".tool-tip-chart")
+          .style("left", `${xPos + 40}px`)
+          .select("#name")
+          .text(i.name);
+
+        d3.select(".tool-tip-chart").select("#value").text(i.quantity_in_stock);
+
+        d3.select(".tool-tip-chart").classed("tool-tip-hide", false);
+      }
+
+      function handleMouseOut() {
+        d3.select(this).transition().duration(500);
+
+        d3.select(".tool-tip-chart").classed("tool-tip-hide", true);
+      }
     }
 
     setItemsData({ ...itemDataOptions });
@@ -85,6 +106,7 @@ const ItemsBarChart = ({ items }) => {
         ></svg>
       </div>
       {/* <div>{JSON.stringify(itemsData)}</div> */}
+      <ToolTip />
     </div>
   );
 };

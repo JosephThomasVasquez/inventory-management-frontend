@@ -155,11 +155,12 @@ input[type="checkbox"]:focus,
 
 .bar {
   fill: var(--primary-color);
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
+  transition: all 0.5s ease;
 }
 
 .bar:hover {
   fill: var(--primary-color-hover);
+  transition: all 0.5s ease;
 }
 
 .axis--x path {

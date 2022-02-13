@@ -1,0 +1,17 @@
+.tool-tip-chart {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  background-color: blanchedalmond;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.tool-tip-hide {
+  display: none;
+}
