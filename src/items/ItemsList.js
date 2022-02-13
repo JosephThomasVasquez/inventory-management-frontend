@@ -102,15 +102,12 @@ const ItemsList = () => {
           </button>
         </div>
 
-        <div className="row">
-          <button
-            className="col-1 btn btn-primary my-1 ms-3"
-            onClick={handleClick}
-          >
-            <div className="">
+        <div className="row my-2">
+          <div className="col-2">
+            <button className="btn btn-primary" onClick={handleClick}>
               <i className="fa fa-plus"></i> Add Item
-            </div>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
 

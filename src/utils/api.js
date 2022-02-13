@@ -91,12 +91,28 @@ export async function listAllItems(params, signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
+// GET
+// read item byu item ID
 export async function readItem(itemId, signal) {
   const url = new URL(`${API_BASE_URL}/api/items/${itemId}`);
 
   const options = {
     method: "GET",
     headers,
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}
+
+// PUT
+// Update item by item ID and submit req.body.data
+export async function updateItem(item, signal) {
+  const url = new URL(`${API_BASE_URL}/api/items/${item.id}`);
+
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({ data: item }),
     signal,
   };
   return await fetchJson(url, options, {});

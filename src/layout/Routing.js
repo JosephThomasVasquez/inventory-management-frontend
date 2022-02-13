@@ -99,6 +99,14 @@ const Routing = () => {
 
         <Route
           exact
+          path="/items/:itemId/edit"
+          element={
+            <ItemForm categories={categories} errorHandler={errorHandler} />
+          }
+        />
+
+        <Route
+          exact
           path="/login"
           element={<Login errorHandler={errorHandler} />}
         />

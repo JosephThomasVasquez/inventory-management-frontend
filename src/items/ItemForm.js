@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { addItem } from "../utils/api";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { readItem, addItem, updateItem } from "../utils/api";
 import gsap from "gsap";
+import dayjs from "dayjs";
 
 const ItemForm = ({ categories, errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
   console.log(location);
-  console.log(categories);
+  // console.log(categories);
+
+  const { itemId } = useParams();
+  console.log("itemId", itemId);
 
   const formRefs = useRef([]);
   formRefs.current = [];
@@ -59,6 +63,32 @@ const ItemForm = ({ categories, errorHandler }) => {
     setCategorySelected(formData.category_id);
   }, [categories]);
 
+  // Fetch existing item data
+  useEffect(() => {
+    const abortController = new AbortController();
+    const getItemData = async () => {
+      try {
+        const response = await readItem(itemId, abortController.signal);
+
+        if (response) {
+          setCategorySelected(response.category_id);
+          const formatDate = dayjs(response.release_date).format("YYYY-MM-DD");
+          setFormData({ ...response, release_date: formatDate });
+        } else {
+          setFormData(initialFormData);
+        }
+      } catch (error) {
+        errorHandler(error);
+      }
+    };
+
+    if (itemId) {
+      getItemData();
+    }
+
+    return () => abortController.abort();
+  }, [itemId]);
+
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
   };
@@ -71,11 +101,20 @@ const ItemForm = ({ categories, errorHandler }) => {
       const abortController = new AbortController();
 
       try {
-        const response = await addItem(formData, abortController.abort());
-        setFormData(response);
-        errorHandler("clearErrors");
+        // Update item
+        if (itemId) {
+          const response = await updateItem(formData, abortController.abort());
+          setFormData(response);
+          errorHandler("clearErrors");
+          navigate(`/items/${itemId}`);
+        } else {
+          // Add Item
+          const response = await addItem(formData, abortController.abort());
+          setFormData(response);
+          errorHandler("clearErrors");
 
-        navigate("/dashboard");
+          navigate("/dashboard");
+        }
       } catch (error) {
         error && errorHandler(error);
       }
@@ -106,7 +145,7 @@ const ItemForm = ({ categories, errorHandler }) => {
       <div className="row my-auto">
         <div className="col-11">
           <h2>
-            Create Item
+            {itemId ? "Edit Item" : "Create Item"}
             <span className="">
               <span> &#8594; </span>
               <span className="text-primary h4">
@@ -138,6 +177,7 @@ const ItemForm = ({ categories, errorHandler }) => {
               className="form-select form-select-sm py-2"
               aria-label="Select Category"
               onChange={handleSelectCategory}
+              value={categorySelected}
             >
               {loadCategories}
             </select>

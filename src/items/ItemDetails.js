@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import { readItem } from "../utils/api";
 import dayjs from "dayjs";
 import gsap from "gsap";
@@ -65,8 +65,9 @@ const ItemDetails = () => {
     <div className="container">
       <div className="row my-auto">
         <div className="col-11 text-primary">
-          <h2>{itemDetails?.name}</h2>
+          <h2 ref={addToRefs}>{itemDetails?.name}</h2>
         </div>
+
         <div className="col-1 button-back">
           <button
             type="button"
@@ -75,6 +76,16 @@ const ItemDetails = () => {
           >
             Back
           </button>
+        </div>
+        <div className="row my-2" ref={addToRefs}>
+          <div className="col">
+            <Link
+              className="btn btn-primary"
+              to={`/items/${itemDetails?.id}/edit`}
+            >
+              <div className="">Edit</div>
+            </Link>
+          </div>
         </div>
       </div>
 
