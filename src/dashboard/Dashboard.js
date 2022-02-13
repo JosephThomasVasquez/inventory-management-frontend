@@ -19,7 +19,9 @@ const Dashboard = ({ categories, items }) => {
       </div>
       <div className="row my-3">
         <Link className="col-2 btn btn-primary" to={`/categories/create`}>
-          <div className="">Create Category</div>
+          <div className="">
+            <i className="fa fa-plus"></i> Create Category
+          </div>
         </Link>
       </div>
 
