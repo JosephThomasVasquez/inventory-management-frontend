@@ -21,7 +21,7 @@ const CategoryCard = ({ category }) => {
           to={`/categories/${category.id}/items`}
         >
           <div className="">
-            <i class="fa-solid fa-boxes-stacked"></i> Items
+            <i className="fa-solid fa-boxes-stacked"></i> Items
           </div>
         </Link>
         <button className="col btn btn-primary ms-3" onClick={handleClick}>

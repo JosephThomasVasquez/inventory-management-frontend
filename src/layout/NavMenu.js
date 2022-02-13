@@ -69,7 +69,7 @@ const NavMenu = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Username
+                <i className="fa-solid fa-user"></i> Username
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
