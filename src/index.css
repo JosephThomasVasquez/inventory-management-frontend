@@ -152,3 +152,16 @@ input[type="checkbox"]:focus,
 .card-header {
   background-color: rgba(74, 30, 233, 0.1);
 }
+
+.bar {
+  fill: var(--primary-color);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
+}
+
+.bar:hover {
+  fill: var(--primary-color-hover);
+}
+
+.axis--x path {
+  display: none;
+}
