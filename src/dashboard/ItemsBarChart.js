@@ -71,12 +71,15 @@ const ItemsBarChart = ({ items }) => {
           return height - y(d.quantity_in_stock);
         });
 
+      // Handle mouse over on bar, shows tool tip
       function handleMouseOver(d, i) {
         // console.log(e.target);
-        const xPos = parseFloat(d3.select(this).attr("x")) + x.bandwidth() * 2;
+        const xPos = parseFloat(d3.select(this).attr("x")) + width / 2;
+        const yPos = parseFloat(d3.select(this).attr("y")) + height * 0.75;
 
         d3.select(".tool-tip-chart")
-          .style("left", `${xPos + 40}px`)
+          .style("left", `${xPos}px`)
+          .style("top", `${yPos}px`)
           .select("#name")
           .text(i.name);
 
@@ -85,6 +88,7 @@ const ItemsBarChart = ({ items }) => {
         d3.select(".tool-tip-chart").classed("tool-tip-hide", false);
       }
 
+      // Handle mouse out on bar, hides tool tip
       function handleMouseOut() {
         d3.select(this).transition().duration(500);
 

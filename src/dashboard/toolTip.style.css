@@ -2,13 +2,14 @@
   position: absolute;
   width: 200px;
   height: auto;
-  background-color: blanchedalmond;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(2px);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
   pointer-events: none;
 }
 
