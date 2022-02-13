@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { listCategories } from "../utils/api";
+import { listCategories, listAllItems } from "../utils/api";
 import Layout from "./Layout";
 import Dashboard from "../dashboard/Dashboard";
 import CategoriesList from "../categories/CategoriesList";
@@ -15,6 +15,7 @@ import ErrorAlert from "../errors/ErrorAlert";
 const Routing = () => {
   const [errors, setErrors] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [items, setItems] = useState([]);
 
   const errorHandler = (errorFound = null) => {
     console.log("error", errorFound);
@@ -32,7 +33,15 @@ const Routing = () => {
     return () => abortController.abort();
   };
 
+  const loadItems = () => {
+    const abortController = new AbortController();
+    setItems(null);
+    listAllItems(abortController.signal).then(setItems).catch(setErrors);
+    return () => abortController.abort();
+  };
+
   useEffect(loadCategories, []);
+  useEffect(loadItems, []);
 
   return (
     <>
@@ -43,7 +52,11 @@ const Routing = () => {
           exact
           path="/dashboard"
           element={
-            <Dashboard categories={categories} errorHandler={errorHandler} />
+            <Dashboard
+              categories={categories}
+              items={items}
+              errorHandler={errorHandler}
+            />
           }
         />
 

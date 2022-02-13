@@ -81,6 +81,16 @@ export async function listItems(categoryId, signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
+// GET
+// items list route
+export async function listAllItems(params, signal) {
+  const url = new URL(`${API_BASE_URL}/api/items`);
+  Object.entries(params).forEach(([key, value]) =>
+    url.searchParams.append(key, value.toString())
+  );
+  return await fetchJson(url, { headers, signal }, []);
+}
+
 export async function readItem(itemId, signal) {
   const url = new URL(`${API_BASE_URL}/api/items/${itemId}`);
 

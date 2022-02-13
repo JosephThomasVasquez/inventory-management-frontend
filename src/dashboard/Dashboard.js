@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ItemsBarChart from "./ItemsBarChart";
 
-const Dashboard = ({ categories }) => {
+const Dashboard = ({ categories, items }) => {
   return (
     <div className="container">
       <div className="row">
@@ -20,6 +21,12 @@ const Dashboard = ({ categories }) => {
         <Link className="col-2 btn btn-primary" to={`/categories/create`}>
           <div className="">Create Category</div>
         </Link>
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <ItemsBarChart items={items} />
+        </div>
       </div>
     </div>
   );
