@@ -296,8 +296,20 @@ const ItemForm = ({ categories, errorHandler }) => {
             </label>
           </div>
 
-          <button type="submit" className="btn btn-primary" ref={addToRefs}>
+          <button
+            type="submit"
+            className="col-2 btn btn-primary me-3"
+            ref={addToRefs}
+          >
             Submit
+          </button>
+          <button
+            type="button"
+            className="col-2 btn btn-secondary"
+            ref={addToRefs}
+            onClick={handleGoBack}
+          >
+            Cancel
           </button>
         </form>
       )}
