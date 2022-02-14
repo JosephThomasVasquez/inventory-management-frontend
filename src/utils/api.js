@@ -91,6 +91,16 @@ export async function listAllItems(params, signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
+export async function searchItems(params, signal) {
+  console.log("params::::", params);
+
+  const url = new URL(`${API_BASE_URL}/api/items/search`);
+  Object.entries(params).forEach(([key, value]) =>
+    url.searchParams.append(key, value.toString())
+  );
+  return await fetchJson(url, { headers, signal }, []);
+}
+
 // GET
 // read item byu item ID
 export async function readItem(itemId, signal) {
@@ -107,6 +117,8 @@ export async function readItem(itemId, signal) {
 // PUT
 // Update item by item ID and submit req.body.data
 export async function updateItem(item, signal) {
+  console.log("item", item);
+
   const url = new URL(`${API_BASE_URL}/api/items/${item.id}`);
 
   const options = {

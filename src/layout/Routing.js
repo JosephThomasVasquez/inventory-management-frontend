@@ -48,6 +48,7 @@ const Routing = () => {
       <Layout />
       <ErrorAlert errors={errors} />
       <Routes>
+        {/* DASHBOARD */}
         <Route
           exact
           path="/dashboard"
@@ -60,6 +61,7 @@ const Routing = () => {
           }
         />
 
+        {/* DASHBOARD REDIRECT */}
         <Route path="/" element={<Navigate replace to="/dashboard" />} />
 
         <Route
@@ -73,6 +75,7 @@ const Routing = () => {
           }
         />
 
+        {/* CATEGORIES */}
         <Route
           exact
           path="/categories/create"
@@ -87,6 +90,7 @@ const Routing = () => {
           element={<ItemsList />}
         />
 
+        {/* ITEMS */}
         <Route exact path="/items/:itemId" element={<ItemDetails />} />
 
         <Route
@@ -105,6 +109,16 @@ const Routing = () => {
           }
         />
 
+        {/* SEARCH ITEMS */}
+        <Route
+          exact
+          path="/search"
+          element={
+            <ItemsList categories={categories} errorHandler={errorHandler} />
+          }
+        />
+
+        {/* USER */}
         <Route
           exact
           path="/login"

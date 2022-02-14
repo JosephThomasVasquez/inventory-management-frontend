@@ -1,29 +1,55 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { listItems } from "../utils/api";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { listItems, searchItems } from "../utils/api";
 import ItemCard from "./ItemCard";
 import ItemsTable from "./ItemsTable";
 import gsap from "gsap";
 
 const ItemsList = () => {
   const { categoryId } = useParams();
+  console.log("catId", categoryId);
   const navigate = useNavigate();
+
+  const { search, state } = useLocation();
+  const location = useLocation();
+
+  console.log("search", search);
+  console.log("state", state);
+  console.log("location", location);
 
   const itemRefs = useRef([]);
   itemRefs.current = [];
 
   const [items, setItems] = useState();
   const [tableView, setTableView] = useState(false);
+
+  const [searchTerm, setSearchTerm] = useState(state);
+
   const [errors, setErrors] = useState(null);
 
   useEffect(() => {
     const abortController = new AbortController();
-    setItems(null);
-    listItems(categoryId, abortController.signal)
-      .then(setItems)
-      .catch(setErrors);
+    if (categoryId) {
+      setItems(null);
+      listItems(categoryId, abortController.signal)
+        .then(setItems)
+        .catch(setErrors);
+    }
+
     return () => abortController.abort();
-  }, []);
+  }, [categoryId]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    if (searchTerm) {
+      setItems(null);
+      searchItems(searchTerm, abortController.signal)
+        .then(setItems)
+        .catch(setErrors);
+    }
+    return () => abortController.abort();
+  }, [searchTerm]);
 
   const addToRefs = (e) => {
     if (e && !itemRefs.current.includes(e)) itemRefs.current.push(e);

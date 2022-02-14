@@ -1,4 +1,5 @@
 import React from "react";
+import SearchItem from "../search/SearchItem";
 import "./navMenu.styles.css";
 import { Link } from "react-router-dom";
 
@@ -48,17 +49,7 @@ const NavMenu = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="col-2 btn btn-primary" type="submit">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
+          <SearchItem />
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 pe-4">
             <li className="nav-item dropdown">
               <a
