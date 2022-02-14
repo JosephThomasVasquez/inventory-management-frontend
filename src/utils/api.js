@@ -92,13 +92,21 @@ export async function listAllItems(params, signal) {
 }
 
 export async function searchItems(params, signal) {
-  console.log("params::::", params);
+  if (params) {
+    const url = new URL(`${API_BASE_URL}/api/search`);
+    console.log("params", params);
 
-  const url = new URL(`${API_BASE_URL}/api/items/search`);
-  Object.entries(params).forEach(([key, value]) =>
-    url.searchParams.append(key, value.toString())
-  );
-  return await fetchJson(url, { headers, signal }, []);
+    const options = {
+      method: "GET",
+      headers,
+      signal,
+    };
+
+    Object.entries(params).forEach(([key, value]) =>
+      url.searchParams.append(key, value.toString())
+    );
+    return await fetchJson(url, options, []);
+  }
 }
 
 // GET

@@ -14,7 +14,7 @@ const SearchItem = ({ errorHandler }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+    // console.log(searchTerm);
     navigate(`/search?item=${searchTerm}`, { state: searchTerm });
   };
 

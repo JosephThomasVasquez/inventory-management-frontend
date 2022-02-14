@@ -8,6 +8,7 @@ import CategoryForm from "../categories/CategoryForm";
 import ItemsList from "../items/ItemsList";
 import ItemDetails from "../items/ItemDetails";
 import ItemForm from "../items/ItemForm";
+import SearchItemsList from "../search/SearchItemsList";
 import Login from "../login/Login";
 import Register from "../register/Register";
 import ErrorAlert from "../errors/ErrorAlert";
@@ -113,9 +114,7 @@ const Routing = () => {
         <Route
           exact
           path="/search"
-          element={
-            <ItemsList categories={categories} errorHandler={errorHandler} />
-          }
+          element={<SearchItemsList errorHandler={errorHandler} />}
         />
 
         {/* USER */}
