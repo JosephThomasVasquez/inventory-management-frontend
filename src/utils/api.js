@@ -44,6 +44,19 @@ export async function registerUser(user, signal) {
   return await fetchJson(url, options, {});
 }
 
+// POST / Login User
+export async function loginUser(user, signal) {
+  const url = new URL(`${API_BASE_URL}/api/users/login`);
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: user }),
+    signal,
+  };
+
+  return await fetchJson(url, options, {});
+}
+
 // -----------------------------------------------------------------------------------------------------------------------
 // -------CATEGORIES------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
@@ -94,7 +107,7 @@ export async function listAllItems(params, signal) {
 export async function searchItems(params, signal) {
   if (params) {
     const url = new URL(`${API_BASE_URL}/api/search`);
-    console.log("params", params);
+    // console.log("params", params);
 
     const options = {
       method: "GET",
@@ -125,7 +138,7 @@ export async function readItem(itemId, signal) {
 // PUT
 // Update item by item ID and submit req.body.data
 export async function updateItem(item, signal) {
-  console.log("item", item);
+  // console.log("item", item);
 
   const url = new URL(`${API_BASE_URL}/api/items/${item.id}`);
 

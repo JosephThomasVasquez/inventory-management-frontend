@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { loginUser } from "../utils/api";
 import gsap from "gsap";
 
-const Login = () => {
+const Login = ({ errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
+
+  const initialFormData = {
+    email: "",
+    password: "",
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const formRefs = useRef([]);
   formRefs.current = [];
@@ -35,6 +43,31 @@ const Login = () => {
     );
   }, []);
 
+  const handleChange = ({ target }) => {
+    setFormData({ ...formData, [target.name]: target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const submitLogin = async () => {
+      const abortController = new AbortController();
+
+      try {
+        const response = await loginUser(formData, abortController.abort());
+        setFormData(response);
+        errorHandler("clearErrors");
+
+        navigate("/dashboard");
+      } catch (error) {
+        error && errorHandler(error);
+        console.log(error);
+      }
+    };
+
+    submitLogin();
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -58,7 +91,7 @@ const Login = () => {
       </div>
 
       <div className="row">
-        <form className="col-6">
+        <form className="col-6" onSubmit={handleSubmit}>
           {/* email */}
           <div className="mb-3" ref={addToRefs}>
             <label htmlFor="email" className="form-label">
@@ -70,6 +103,8 @@ const Login = () => {
               id="email"
               aria-describedby="email"
               placeholder="Enter email"
+              value={formData?.email}
+              onChange={handleChange}
             />
           </div>
 
@@ -84,6 +119,8 @@ const Login = () => {
               id="password"
               aria-describedby="password"
               placeholder="Enter password"
+              value={formData?.password}
+              onChange={handleChange}
             />
           </div>
 
