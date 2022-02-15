@@ -28,7 +28,7 @@ const ItemForm = ({ categories, errorHandler }) => {
     quantity_in_stock: 0,
     weight_in_lbs: 0,
     category_id: 1,
-    // photos: [],
+    main_imageUrl: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -166,7 +166,35 @@ const ItemForm = ({ categories, errorHandler }) => {
         </div>
       </div>
 
-      <form className="col-6" onSubmit={handleSubmit}>
+      <form className="col-12" onSubmit={handleSubmit}>
+        {/* Main Image Url */}
+        <div className="row">
+          <div className="col-6">
+            {formData.main_imageUrl ? (
+              <img
+                src={formData.main_imageUrl}
+                alt="Main-image"
+                className="main-image-edit"
+              />
+            ) : null}
+          </div>
+          <div className="col-6 my-3" ref={addToRefs}>
+            <label htmlFor="main_imageUrl" className="form-label">
+              Main Image
+            </label>
+            <input
+              type="text"
+              name="main_imageUrl"
+              className="form-control"
+              id="main_imageUrl"
+              aria-describedby="main_imageUrl"
+              placeholder="Enter name of the item"
+              value={formData?.main_imageUrl}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
         {/* Categories Dropdown */}
         <div className="row">
           <div className="col-6 my-3" ref={addToRefs}>
@@ -175,6 +203,7 @@ const ItemForm = ({ categories, errorHandler }) => {
             </label>
             <select
               className="form-select form-select-sm py-2"
+              name="category_id"
               aria-label="Select Category"
               onChange={handleSelectCategory}
               value={categorySelected}

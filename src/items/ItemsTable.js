@@ -10,43 +10,21 @@ const ItemsTable = ({ items }) => {
 
   const tableHeaders = () => {
     if (items.length > 0) {
-      let headers = Object.keys(items[0]);
+      let headers = [
+        "ID",
+        "Image",
+        "Name",
+        "Sku",
+        "model",
+        "Price",
+        "Stock",
+        "Weight",
+        "Release",
+        "Details",
+        "Edit",
+      ];
 
-      const filteredHeaders = headers.filter((header) => {
-        if (
-          header !== "description" &&
-          header !== "release_date" &&
-          header !== "description"
-        ) {
-          return header;
-        }
-      });
-
-      console.log("filteredHeaders", filteredHeaders);
-
-      const renameHeaders = () => {
-        headers.forEach((header, index) => {
-          if (header === "quantity_in_stock") {
-            headers[index] = "Stock";
-          }
-
-          if (header === "weight_in_lbs") {
-            headers[index] = "Weight";
-          }
-
-          if (header === "release_date") {
-            headers[index] = "Release";
-          }
-        });
-      };
-
-      renameHeaders();
-
-      const trimHeaders = headers.splice(0, headers.length - 3);
-      trimHeaders.push("Details");
-      trimHeaders.push("Edit");
-
-      const values = trimHeaders.map((head) => (
+      const values = headers.map((head) => (
         <th scope="col" key={head} className="text-primary">
           {head[0].toUpperCase() + head.slice(1)}
         </th>
@@ -84,12 +62,12 @@ const ItemsTable = ({ items }) => {
     return items.map((item, index) => {
       const {
         id,
-        sku,
+        main_imageUrl,
         name,
+        sku,
         model,
-        description,
-        release_date,
         price,
+        release_date,
         quantity_in_stock,
         weight_in_lbs,
       } = item;
@@ -97,23 +75,23 @@ const ItemsTable = ({ items }) => {
       return (
         <tr scope="row" key={id} ref={addToRefs} className="item-row">
           <td colSpan="1">{id}</td>
-          <td colSpan="1" className="text-center">
-            {sku ? sku : "..."}
+          <td colSpan="1">
+            <img src={main_imageUrl} alt="" width="48" height="auto" />
           </td>
           <td colSpan="1" className="text-primary fw-bold">
             {name.length > 32 ? `${name.substring(0, 32)} ...` : name}
           </td>
+          <td colSpan="1" className="text-center">
+            {sku ? sku : "..."}
+          </td>
+
           <td colSpan="1">{model ? model : "..."}</td>
-          <td colSpan="1">
-            {description.length > 32
-              ? `${description.substring(0, 32)} ...`
-              : description}
+
+          <td colSpan="1" className="text-primary fw-bold">
+            ${price}
           </td>
           <td colSpan="1">
             {release_date ? dayjs(release_date).format("MMM DD, YYYY") : "N/A"}
-          </td>
-          <td colSpan="1" className="text-primary fw-bold">
-            ${price}
           </td>
           <td colSpan="1">{quantity_in_stock}</td>
           <td colSpan="1">{weight_in_lbs} lbs.</td>
