@@ -125,7 +125,10 @@ const ItemsTable = ({ items }) => {
             </Link>
           </td>
           <td>
-            <Link className="col btn btn-primary" to={`/items/${item.id}/edit`}>
+            <Link
+              className="col btn btn-outline-primary"
+              to={`/items/${item.id}/edit`}
+            >
               <div className="">
                 <i className="fa-solid fa-pen-to-square"></i> Edit
               </div>

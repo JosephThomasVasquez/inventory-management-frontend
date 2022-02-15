@@ -80,7 +80,7 @@ const ItemDetails = () => {
         <div className="row my-2" ref={addToRefs}>
           <div className="col">
             <Link
-              className="btn btn-primary"
+              className="btn btn-outline-primary"
               to={`/items/${itemDetails?.id}/edit`}
             >
               <div className="">

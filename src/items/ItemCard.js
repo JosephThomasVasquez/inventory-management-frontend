@@ -22,11 +22,22 @@ const ItemCard = ({ item }) => {
           <div className="col-6">Qty: {item.quantity_in_stock}</div>
         </div>
 
-        <Link className="col-4 btn btn-primary" to={`/items/${item.id}`}>
-          <div className="">
-            <i className="fa-solid fa-arrow-up-right-from-square"></i> View
-          </div>
-        </Link>
+        <div className="row">
+          <Link className="col-4 btn btn-primary" to={`/items/${item.id}`}>
+            <div className="">
+              <i className="fa-solid fa-arrow-up-right-from-square"></i> View
+            </div>
+          </Link>
+
+          <Link
+            className="col-2 btn btn-outline-primary ms-auto"
+            to={`/items/${item.id}/edit`}
+          >
+            <div className="">
+              <i className="fa-solid fa-pen-to-square"></i>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
