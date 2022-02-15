@@ -83,7 +83,9 @@ const ItemDetails = () => {
               className="btn btn-primary"
               to={`/items/${itemDetails?.id}/edit`}
             >
-              <div className="">Edit</div>
+              <div className="">
+                <i className="fa-solid fa-pen-to-square"></i> Edit
+              </div>
             </Link>
           </div>
         </div>

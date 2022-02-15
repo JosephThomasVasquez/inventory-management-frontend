@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ItemCard = ({ item }) => {
   return (
     <div className="card shadow my-2 item-card">
-      <div className="card-header py-0">
+      <div className="card-header py-2">
         <div className="h6 my-1">
           {item.name.length > 32
             ? `${item.name.substring(0, 32)} ...`
@@ -17,8 +17,15 @@ const ItemCard = ({ item }) => {
             ? `${item.description.substring(0, 100)} ...`
             : item.description}
         </p>
+        <div className="row">
+          <div className="col-6 h4">${item.price}</div>
+          <div className="col-6">Qty: {item.quantity_in_stock}</div>
+        </div>
+
         <Link className="col-4 btn btn-primary" to={`/items/${item.id}`}>
-          <div className="">View</div>
+          <div className="">
+            <i className="fa-solid fa-arrow-up-right-from-square"></i> View
+          </div>
         </Link>
       </div>
     </div>

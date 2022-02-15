@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import ToolTip from "./ToolTip";
 import "./barChart.style.css";
 import * as d3 from "d3";
 
 const ItemsBarChart = ({ items }) => {
+  const location = useLocation();
   const svgRef = useRef(null);
 
   const barChartConfig = {
@@ -31,6 +33,8 @@ const ItemsBarChart = ({ items }) => {
         margin = { top: 20, right: 20, bottom: 30, left: 40 },
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
+
+      svg.selectAll("*").remove();
 
       const x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
         y = d3.scaleLinear().rangeRound([height, 0]);

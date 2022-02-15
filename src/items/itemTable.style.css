@@ -1,0 +1,9 @@
+.item-row {
+  /* background-color: white; */
+  transition: background-color 0.25s ease-in;
+}
+
+.item-row:hover {
+  background-color: var(--primary-light-highlight-color);
+  transition: background-color 0.25s ease-in-out;
+}

@@ -8,11 +8,8 @@ const ItemForm = ({ categories, errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  console.log(location);
-  // console.log(categories);
 
   const { itemId } = useParams();
-  console.log("itemId", itemId);
 
   const formRefs = useRef([]);
   formRefs.current = [];

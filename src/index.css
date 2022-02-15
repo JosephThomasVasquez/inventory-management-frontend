@@ -1,6 +1,7 @@
 :root {
-  --primary-color: #4a1ee9;
-  --primary-color-hover: #8400ff;
+  --primary-color: rgba(74, 30, 233, 1);
+  --primary-color-hover: rgba(132, 0, 255, 1);
+  --primary-light-highlight-color: rgba(74, 30, 233, 0.1);
 }
 
 body {
@@ -150,5 +151,5 @@ input[type="checkbox"]:focus,
 }
 
 .card-header {
-  background-color: rgba(74, 30, 233, 0.1);
+  background-color: var(--primary-light-highlight-color);
 }

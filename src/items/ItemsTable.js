@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import "./itemTable.style.css";
 import dayjs from "dayjs";
 import gsap from "gsap";
 
@@ -11,6 +12,18 @@ const ItemsTable = ({ items }) => {
     if (items.length > 0) {
       let headers = Object.keys(items[0]);
 
+      const filteredHeaders = headers.filter((header) => {
+        if (
+          header !== "description" &&
+          header !== "release_date" &&
+          header !== "description"
+        ) {
+          return header;
+        }
+      });
+
+      console.log("filteredHeaders", filteredHeaders);
+
       const renameHeaders = () => {
         headers.forEach((header, index) => {
           if (header === "quantity_in_stock") {
@@ -20,6 +33,10 @@ const ItemsTable = ({ items }) => {
           if (header === "weight_in_lbs") {
             headers[index] = "Weight";
           }
+
+          if (header === "release_date") {
+            headers[index] = "Release";
+          }
         });
       };
 
@@ -27,10 +44,11 @@ const ItemsTable = ({ items }) => {
 
       const trimHeaders = headers.splice(0, headers.length - 3);
       trimHeaders.push("Details");
+      trimHeaders.push("Edit");
 
       const values = trimHeaders.map((head) => (
         <th scope="col" key={head} className="text-primary">
-          {head.toUpperCase()}
+          {head[0].toUpperCase() + head.slice(1)}
         </th>
       ));
 
@@ -77,10 +95,12 @@ const ItemsTable = ({ items }) => {
       } = item;
 
       return (
-        <tr scope="row" key={id} ref={addToRefs}>
+        <tr scope="row" key={id} ref={addToRefs} className="item-row">
           <td colSpan="1">{id}</td>
-          <td colSpan="1">{sku ? sku : "..."}</td>
-          <td colSpan="1">
+          <td colSpan="1" className="text-center">
+            {sku ? sku : "..."}
+          </td>
+          <td colSpan="1" className="text-primary fw-bold">
             {name.length > 32 ? `${name.substring(0, 32)} ...` : name}
           </td>
           <td colSpan="1">{model ? model : "..."}</td>
@@ -92,12 +112,23 @@ const ItemsTable = ({ items }) => {
           <td colSpan="1">
             {release_date ? dayjs(release_date).format("MMM DD, YYYY") : "N/A"}
           </td>
-          <td colSpan="1">${price}</td>
+          <td colSpan="1" className="text-primary fw-bold">
+            ${price}
+          </td>
           <td colSpan="1">{quantity_in_stock}</td>
           <td colSpan="1">{weight_in_lbs} lbs.</td>
           <td>
             <Link className="col btn btn-primary" to={`/items/${item.id}`}>
-              <div className="">View</div>
+              <div className="">
+                <i className="fa-solid fa-arrow-up-right-from-square"></i> View
+              </div>
+            </Link>
+          </td>
+          <td>
+            <Link className="col btn btn-primary" to={`/items/${item.id}/edit`}>
+              <div className="">
+                <i className="fa-solid fa-pen-to-square"></i> Edit
+              </div>
             </Link>
           </td>
         </tr>
@@ -112,13 +143,7 @@ const ItemsTable = ({ items }) => {
       <thead>
         <tr>{tableHeaders()}</tr>
       </thead>
-      <tbody>
-        <tr>
-          {/* <th scope="row">1</th>
-          {tableItems} */}
-        </tr>
-        {fillRows()}
-      </tbody>
+      <tbody>{fillRows()}</tbody>
     </table>
   );
 };
