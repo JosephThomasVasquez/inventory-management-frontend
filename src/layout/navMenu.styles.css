@@ -1,5 +1,13 @@
 .navbar-brand {
-  color: white;
+  color: var(--primary-brand-color) !important;
+}
+
+.navbar-bg {
+  background: linear-gradient(
+    170deg,
+    var(--primary-color) 0%,
+    rgb(0, 46, 73) 100%
+  );
 }
 
 .nav-link-item {

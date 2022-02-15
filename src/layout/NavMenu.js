@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NavMenu = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    <nav className="navbar navbar-expand-lg navbar-dark py-3 navbar-bg">
       <div className="container-fluid">
         <Link to="/dashboard" className="navbar-brand">
           <div className="" aria-current="page" href="#">

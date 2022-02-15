@@ -6,6 +6,7 @@
   --primary-color: rgb(0, 110, 173);
   --primary-color-hover: rgb(0, 186, 192);
   --primary-light-highlight-color: rgba(29, 199, 221, 0.1);
+  --primary-brand-color: rgb(0, 247, 255);
 }
 
 body {

@@ -58,7 +58,7 @@ const ItemForm = ({ categories, errorHandler }) => {
 
   useEffect(() => {
     setCategorySelected(formData.category_id);
-  }, [categories]);
+  }, [categories, categorySelected]);
 
   // Fetch existing item data
   useEffect(() => {
@@ -121,11 +121,16 @@ const ItemForm = ({ categories, errorHandler }) => {
   };
 
   const handleSelectCategory = ({ target }) => {
-    console.log("target", target.options[target.selectedIndex].text);
+    console.log("target:", target.options[target.selectedIndex].value);
+
+    const categoryId = target.options[target.selectedIndex].value;
     // options[sel.selectedIndex].text;
-    setCategorySelected(target.value);
-    setFormData({ ...formData, category_id: target.value });
+    setCategorySelected(categoryId);
+    setFormData({ ...formData, category_id: categoryId });
   };
+
+  console.log("c selected:", categorySelected);
+  const findCategory = categories?.find((c) => c.id == categorySelected);
 
   const loadCategories = categories?.map(({ name, id }) => (
     <option key={id} name={name} className="list-group-item" value={id}>
@@ -145,9 +150,7 @@ const ItemForm = ({ categories, errorHandler }) => {
             {itemId ? "Edit Item" : "Create Item"}
             <span className="">
               <span> &#8594; </span>
-              <span className="text-primary h4">
-                {categories ? categories[categorySelected - 1]?.name : null}
-              </span>
+              <span className="text-primary h4">{findCategory?.name}</span>
             </span>
           </h2>
         </div>
