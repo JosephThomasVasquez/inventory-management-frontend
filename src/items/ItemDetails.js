@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
+import "./item.style.css";
 import { readItem } from "../utils/api";
 import dayjs from "dayjs";
 import gsap from "gsap";
@@ -94,8 +95,18 @@ const ItemDetails = () => {
       {itemDetails && (
         <div>
           <div className="row">
+            {/* Main Image */}
+            <div className="col-6 mb-3 h5" ref={addToRefs}>
+              <img
+                src={itemDetails.main_imageUrl}
+                alt="default_image"
+                className="main-item-image"
+                width="300"
+                height="400"
+              />
+            </div>
             {/* Name */}
-            <div className="col-8 mb-3 h5" ref={addToRefs}>
+            <div className="col-6 mb-3 h5" ref={addToRefs}>
               {itemDetails.description}
             </div>
           </div>
