@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { listCategories, listAllItems } from "../utils/api";
 import Layout from "./Layout";
 import Dashboard from "../dashboard/Dashboard";
@@ -14,6 +14,8 @@ import Register from "../register/Register";
 import ErrorAlert from "../errors/ErrorAlert";
 
 const Routing = () => {
+  const location = useLocation();
+
   const [errors, setErrors] = useState(null);
   const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
@@ -42,8 +44,8 @@ const Routing = () => {
     return () => abortController.abort();
   };
 
-  useEffect(loadCategories, [items]);
-  useEffect(loadItems, []);
+  useEffect(loadCategories, [location]);
+  useEffect(loadItems, [location]);
 
   return (
     <>
