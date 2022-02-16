@@ -16,6 +16,7 @@ const SearchItem = ({ errorHandler }) => {
     e.preventDefault();
     // console.log(searchTerm);
     navigate(`/search?item=${searchTerm}`, { state: searchTerm });
+    setSearchTerm("");
   };
 
   return (
@@ -23,8 +24,9 @@ const SearchItem = ({ errorHandler }) => {
       <input
         className="form-control me-2"
         type="search"
-        placeholder="Search"
+        placeholder="Search items..."
         aria-label="Search"
+        value={searchTerm ? searchTerm : ""}
         onChange={handleChange}
       />
       <button className="col-2 btn btn-primary" type="submit">
