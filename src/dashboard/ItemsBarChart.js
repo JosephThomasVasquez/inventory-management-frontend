@@ -78,11 +78,8 @@ const ItemsBarChart = ({ items }) => {
 
       // Handle mouse over on bar, shows tool tip
       function handleMouseOver(d, i) {
-        // console.log(e.target);
-        console.log(d.clientX);
         // const xPos = parseFloat(d3.select(this).attr("x"));
         const xPos = parseFloat(d.clientX);
-        console.log(this);
         const yPos = parseFloat(d3.select(this).attr("y")) + height * 0.75;
 
         d3.select(".tool-tip-chart")

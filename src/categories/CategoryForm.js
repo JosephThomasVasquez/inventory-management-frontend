@@ -7,7 +7,6 @@ const CategoryForm = ({ errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  console.log(location);
 
   const formRefs = useRef([]);
   formRefs.current = [];

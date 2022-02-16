@@ -121,15 +121,11 @@ const ItemForm = ({ categories, errorHandler }) => {
   };
 
   const handleSelectCategory = ({ target }) => {
-    console.log("target:", target.options[target.selectedIndex].value);
-
     const categoryId = target.options[target.selectedIndex].value;
-    // options[sel.selectedIndex].text;
     setCategorySelected(categoryId);
     setFormData({ ...formData, category_id: categoryId });
   };
 
-  console.log("c selected:", categorySelected);
   const findCategory = categories?.find((c) => c.id == categorySelected);
 
   const loadCategories = categories?.map(({ name, id }) => (

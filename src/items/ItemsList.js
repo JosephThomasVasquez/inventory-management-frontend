@@ -7,15 +7,11 @@ import gsap from "gsap";
 
 const ItemsList = () => {
   const { categoryId } = useParams();
-  console.log("catId", categoryId);
+
   const navigate = useNavigate();
 
   const { search, state } = useLocation();
   const location = useLocation();
-
-  console.log("search", search);
-  console.log("state", state);
-  console.log("location", location);
 
   const itemRefs = useRef([]);
   itemRefs.current = [];
