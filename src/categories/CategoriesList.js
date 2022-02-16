@@ -38,6 +38,10 @@ const CategoriesList = ({ categories }) => {
     }
   };
 
+  const handleClick = () => {
+    navigate(`/categories/create`);
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -56,6 +60,14 @@ const CategoriesList = ({ categories }) => {
           >
             Back
           </button>
+        </div>
+
+        <div className="row my-2">
+          <div className="col-2">
+            <button className="btn btn-primary" onClick={handleClick}>
+              <i className="fa fa-plus"></i> Add Category
+            </button>
+          </div>
         </div>
       </div>
 

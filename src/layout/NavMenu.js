@@ -44,7 +44,7 @@ const NavMenu = () => {
             <li className="nav-item">
               <Link to="/items/create" className="nav-link-item">
                 <div className="nav-link" href="/items/create">
-                  Add Item
+                  <i className="fa fa-plus"></i> Add Item
                 </div>
               </Link>
             </li>
