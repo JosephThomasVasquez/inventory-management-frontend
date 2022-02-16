@@ -74,29 +74,37 @@ const ItemsTable = ({ items }) => {
 
       return (
         <tr scope="row" key={id} ref={addToRefs} className="item-row">
-          <td colSpan="1">{id}</td>
-          <td colSpan="1">
-            <img src={main_imageUrl} alt="" width="48" height="auto" />
+          <td colSpan="1" className="align-middle">
+            {id}
           </td>
-          <td colSpan="1" className="text-primary fw-bold">
+          <td colSpan="1" className="align-middle">
+            <img src={main_imageUrl} alt="Main Image" className="table-image" />
+          </td>
+          <td colSpan="1" className="text-primary fw-bold align-middle">
             {name.length > 32 ? `${name.substring(0, 32)} ...` : name}
           </td>
-          <td colSpan="1" className="text-center">
+          <td colSpan="1" className="text-center align-middle">
             {sku ? sku : "..."}
           </td>
 
-          <td colSpan="1">{model ? model : "..."}</td>
+          <td colSpan="1" className="align-middle">
+            {model ? model : "..."}
+          </td>
 
-          <td colSpan="1" className="text-primary fw-bold">
+          <td colSpan="1" className="text-primary fw-bold align-middle">
             ${price}
           </td>
-          <td colSpan="1">
+          <td colSpan="1" className="align-middle">
+            {quantity_in_stock}
+          </td>
+          <td colSpan="1" className="align-middle">
+            {weight_in_lbs} lbs.
+          </td>
+          <td colSpan="1" className="align-middle">
             {release_date ? dayjs(release_date).format("MMM DD, YYYY") : "N/A"}
           </td>
-          <td colSpan="1">{quantity_in_stock}</td>
-          <td colSpan="1">{weight_in_lbs} lbs.</td>
           <td>
-            <Link className="col btn btn-primary" to={`/items/${item.id}`}>
+            <Link className="col btn btn-primary mt-1" to={`/items/${item.id}`}>
               <div className="">
                 <i className="fa-solid fa-arrow-up-right-from-square"></i> View
               </div>

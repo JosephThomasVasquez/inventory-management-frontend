@@ -142,19 +142,3 @@ input[type="checkbox"]:focus,
 .button-back {
   position: relative;
 }
-
-/* CARDS */
-
-.item-card {
-  min-height: 240px;
-  max-height: 240px;
-}
-
-.item-text {
-  min-height: 80px;
-  max-height: 80px;
-}
-
-.card-header {
-  background-color: var(--primary-light-highlight-color);
-}

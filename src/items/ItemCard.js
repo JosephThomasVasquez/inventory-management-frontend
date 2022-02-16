@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./item.style.css";
 
 const ItemCard = ({ item }) => {
   return (
@@ -13,24 +14,33 @@ const ItemCard = ({ item }) => {
       </div>
       <div className="card-body">
         <p className="card-text item-text">
-          {item.description.length > 100
-            ? `${item.description.substring(0, 100)} ...`
-            : item.description}
+          {item.main_imageUrl ? (
+            <img
+              src={item.main_imageUrl}
+              alt="Main image"
+              className="card-image"
+            />
+          ) : (
+            "No Image"
+          )}
         </p>
-        <div className="row">
-          <div className="col-6 h4">${item.price}</div>
-          <div className="col-6">Qty: {item.quantity_in_stock}</div>
+
+        <div className="col h4">${item.price}</div>
+
+        <div className="col my-2">
+          Qty:{" "}
+          <span className="fw-bold text-primary">{item.quantity_in_stock}</span>
         </div>
 
-        <div className="row">
-          <Link className="col-4 btn btn-primary" to={`/items/${item.id}`}>
+        <div className="d-flex justify-content-start">
+          <Link className="col-4 btn btn-primary me-1" to={`/items/${item.id}`}>
             <div className="">
               <i className="fa-solid fa-arrow-up-right-from-square"></i> View
             </div>
           </Link>
 
           <Link
-            className="col-2 btn btn-outline-primary ms-auto"
+            className="col-2 btn btn-outline-primary ml-2"
             to={`/items/${item.id}/edit`}
           >
             <div className="">

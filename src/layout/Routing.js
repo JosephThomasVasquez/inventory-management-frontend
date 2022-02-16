@@ -28,6 +28,7 @@ const Routing = () => {
   };
 
   const loadCategories = () => {
+    console.log("loading categories...");
     const abortController = new AbortController();
     setCategories(null);
     listCategories(abortController.signal).then(setCategories).catch(setErrors);
@@ -41,7 +42,7 @@ const Routing = () => {
     return () => abortController.abort();
   };
 
-  useEffect(loadCategories, []);
+  useEffect(loadCategories, [items]);
   useEffect(loadItems, []);
 
   return (
