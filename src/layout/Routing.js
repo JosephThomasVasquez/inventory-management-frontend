@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { listCategories, listAllItems } from "../utils/api";
+import { listCategories, listAllItems, deleteItem } from "../utils/api";
 import Layout from "./Layout";
 import Dashboard from "../dashboard/Dashboard";
 import CategoriesList from "../categories/CategoriesList";
@@ -45,7 +45,7 @@ const Routing = () => {
   };
 
   useEffect(loadCategories, [location]);
-  useEffect(loadItems, [location]);
+  useEffect(loadItems, [location, deleteItem]);
 
   return (
     <>

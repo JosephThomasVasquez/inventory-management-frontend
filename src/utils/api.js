@@ -169,12 +169,14 @@ export async function addItem(item, signal) {
 }
 
 // Add new item to Database
-export async function deleteItem(itemId, signal) {
+export async function deleteItem(itemId) {
+  console.log("api:", itemId);
   const url = new URL(`${API_BASE_URL}/api/items/${itemId}`);
 
   const options = {
     method: "DELETE",
     headers,
   };
+
   return await fetchJson(url, options, {});
 }

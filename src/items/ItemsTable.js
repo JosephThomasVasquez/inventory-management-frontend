@@ -62,15 +62,14 @@ const ItemsTable = ({ items, errorHandler }) => {
     );
   }, [items]);
 
-  const handleDelete = () => {
-    console.log("Deleted Item");
+  const handleDelete = async () => {
+    try {
+      await deleteItem(selectedItem.id);
+      console.log("Deleted Item");
 
-    if (selectedItem.id) {
       setSelectedItem({ name: "", id: "" });
-
-      try {
-        deleteItem(selectedItem.id);
-      } catch (error) {}
+    } catch (error) {
+      errorHandler(error);
     }
   };
 
