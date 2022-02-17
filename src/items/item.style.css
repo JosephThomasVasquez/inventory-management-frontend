@@ -44,3 +44,7 @@
   height: 240px;
   object-fit: cover;
 }
+
+.modal-dialog {
+  background-color: white;
+}
