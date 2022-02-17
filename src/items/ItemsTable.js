@@ -22,6 +22,7 @@ const ItemsTable = ({ items }) => {
         "Release",
         "Details",
         "Edit",
+        "Delete",
       ];
 
       const values = headers.map((head) => (
@@ -57,6 +58,10 @@ const ItemsTable = ({ items }) => {
       }
     );
   }, [items]);
+
+  const handleDelete = ({ target }) => {
+    console.log(target.id);
+  };
 
   const fillRows = () => {
     return items.map((item, index) => {
@@ -103,13 +108,15 @@ const ItemsTable = ({ items }) => {
           <td colSpan="1" className="align-middle">
             {release_date ? dayjs(release_date).format("MMM DD, YYYY") : "N/A"}
           </td>
+
           <td>
             <Link className="col btn btn-primary mt-1" to={`/items/${item.id}`}>
               <div className="">
-                <i className="fa-solid fa-arrow-up-right-from-square"></i> View
+                <i className="fa-solid fa-eye"></i> View
               </div>
             </Link>
           </td>
+
           <td>
             <Link
               className="col btn btn-outline-primary"
@@ -119,6 +126,16 @@ const ItemsTable = ({ items }) => {
                 <i className="fa-solid fa-pen-to-square"></i> Edit
               </div>
             </Link>
+          </td>
+
+          <td>
+            <div
+              className="col btn btn-outline-danger"
+              id={id}
+              onClick={handleDelete}
+            >
+              <i className="fa-solid fa-trash-can"></i>
+            </div>
           </td>
         </tr>
       );

@@ -15,3 +15,7 @@
   background-color: var(--primary-light-highlight-color);
   transition: background-color 0.25s ease-in-out;
 }
+
+.fa-trash-can {
+  pointer-events: none;
+}

@@ -35,7 +35,7 @@ const ItemCard = ({ item }) => {
         <div className="d-flex justify-content-start">
           <Link className="col-4 btn btn-primary me-1" to={`/items/${item.id}`}>
             <div className="">
-              <i className="fa-solid fa-arrow-up-right-from-square"></i> View
+              <i className="fa-solid fa-eye"></i> View
             </div>
           </Link>
 
