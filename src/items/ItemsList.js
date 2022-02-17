@@ -57,16 +57,16 @@ const ItemsList = ({ errorHandler }) => {
       {
         opacity: 0,
         y: -100,
-        stagger: 0.15,
+        stagger: 0.05,
         duration: 0.75,
-        ease: "back.out(2.5)",
+        ease: "back.out(1.5)",
       },
       {
         opacity: 1,
         y: 0,
-        stagger: 0.15,
+        stagger: 0.05,
         duration: 0.75,
-        ease: "back.out(2.5)",
+        ease: "back.out(1.5)",
       }
     );
   }, [items, tableView]);
