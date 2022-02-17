@@ -5,7 +5,7 @@ import ItemCard from "./ItemCard";
 import ItemsTable from "./ItemsTable";
 import gsap from "gsap";
 
-const ItemsList = () => {
+const ItemsList = ({ errorHandler }) => {
   const { categoryId } = useParams();
 
   const navigate = useNavigate();
@@ -134,7 +134,7 @@ const ItemsList = () => {
       </div>
 
       {tableView ? (
-        <ItemsTable items={items} />
+        <ItemsTable items={items} errorHandler={errorHandler} />
       ) : (
         <div className="row">{items && mapItems()}</div>
       )}

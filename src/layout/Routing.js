@@ -91,7 +91,7 @@ const Routing = () => {
         <Route
           exact
           path="/categories/:categoryId/items"
-          element={<ItemsList />}
+          element={<ItemsList errorHandler={errorHandler} />}
         />
 
         {/* ITEMS */}

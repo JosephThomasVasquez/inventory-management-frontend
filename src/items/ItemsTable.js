@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { deleteItem } from "../utils/api";
 import "./itemTable.style.css";
 import dayjs from "dayjs";
 import gsap from "gsap";
 
-const ItemsTable = ({ items }) => {
+const ItemsTable = ({ items, errorHandler }) => {
   const itemRefs = useRef([]);
   itemRefs.current = [];
 
@@ -61,15 +62,19 @@ const ItemsTable = ({ items }) => {
     );
   }, [items]);
 
-  const handleDelete = ({ target }) => {
-    console.log(target.id);
+  const handleDelete = () => {
+    console.log("Deleted Item");
 
-    if (target.id) {
-      return deleteModal;
+    if (selectedItem.id) {
+      setSelectedItem({ name: "", id: "" });
+
+      try {
+        deleteItem(selectedItem.id);
+      } catch (error) {}
     }
   };
 
-  const handleId = ({ target }) => {
+  const handleConfirmation = ({ target }) => {
     console.log(target.id);
 
     const foundItem = items.find((i) => i.id === Number(target.id));
@@ -118,6 +123,7 @@ const ItemsTable = ({ items }) => {
             <button
               type="button"
               className="btn btn-danger"
+              data-bs-dismiss="modal"
               onClick={handleDelete}
             >
               Delete
@@ -201,7 +207,7 @@ const ItemsTable = ({ items }) => {
               name={name}
               id={id}
               value={name}
-              onClick={handleId}
+              onClick={handleConfirmation}
             >
               <i className="fa-solid fa-trash-can"></i>
             </div>
