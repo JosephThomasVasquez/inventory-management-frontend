@@ -48,14 +48,14 @@ const ItemsTable = ({ items, errorHandler }) => {
       {
         opacity: 0,
         y: -100,
-        stagger: 0.05,
+        stagger: 0.025,
         duration: 0.75,
         ease: "back.out(1.5)",
       },
       {
         opacity: 1,
         y: 0,
-        stagger: 0.05,
+        stagger: 0.025,
         duration: 0.75,
         ease: "back.out(1.5)",
       }

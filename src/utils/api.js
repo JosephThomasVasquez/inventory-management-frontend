@@ -74,12 +74,41 @@ export async function listCategories(params, signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
+// GET
+// read category by category ID
+export async function readCategory(categoryId, signal) {
+  const url = new URL(`${API_BASE_URL}/api/categories/${categoryId}`);
+
+  const options = {
+    method: "GET",
+    headers,
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}
+
 // Add new item to Database
 export async function createCategory(category, signal) {
   const url = new URL(`${API_BASE_URL}/api/categories`);
 
   const options = {
     method: "POST",
+    headers,
+    body: JSON.stringify({ data: category }),
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}
+
+// PUT
+// Update item by item ID and submit req.body.data
+export async function updateCategory(category, signal) {
+  // console.log("item", item);
+
+  const url = new URL(`${API_BASE_URL}/api/categories/${category.id}`);
+
+  const options = {
+    method: "PUT",
     headers,
     body: JSON.stringify({ data: category }),
     signal,
@@ -127,7 +156,7 @@ export async function searchItems(params, signal) {
 }
 
 // GET
-// read item byu item ID
+// read item by item ID
 export async function readItem(itemId, signal) {
   const url = new URL(`${API_BASE_URL}/api/items/${itemId}`);
 

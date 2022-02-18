@@ -4,6 +4,10 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
 }
 
+.chart .bar {
+  background: linear-gradient(-90deg, blue, red);
+}
+
 .bar {
   fill: var(--primary-color);
   transition: all 0.5s ease;

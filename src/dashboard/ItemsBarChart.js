@@ -46,6 +46,10 @@ const ItemsBarChart = ({ items }) => {
       x.domain(items.map((d) => d.id));
       y.domain([0, d3.max(items, (d) => d.quantity_in_stock)]);
 
+      const max = d3.max(items, function (d) {
+        return +d.value;
+      });
+
       g.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + height + ")")
@@ -65,6 +69,7 @@ const ItemsBarChart = ({ items }) => {
         .data(items)
         .join("rect")
         .attr("class", "bar")
+        .attr("stroke", "url(#line-gradient)")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .attr("name", (d) => d.name)

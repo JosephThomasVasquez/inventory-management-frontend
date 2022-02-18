@@ -29,6 +29,15 @@ const CategoryCard = ({ category }) => {
             <i className="fa fa-plus"></i> Add Item
           </div>
         </button>
+
+        <Link
+          className="col-1 btn btn-outline-primary ms-3"
+          to={`/categories/${category.id}/edit`}
+        >
+          <div className="">
+            <i className="fa-solid fa-pen-to-square"></i>
+          </div>
+        </Link>
       </div>
     </div>
   );
