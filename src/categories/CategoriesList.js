@@ -17,13 +17,19 @@ const CategoriesList = ({ categories }) => {
   useEffect(() => {
     gsap.fromTo(
       categoryRefs.current,
-      { opacity: 0, x: 100, stagger: 0.15, duration: 1, ease: "back.out(2.5)" },
+      {
+        opacity: 0,
+        y: -100,
+        stagger: 0.05,
+        duration: 0.75,
+        ease: "back.out(1.5)",
+      },
       {
         opacity: 1,
-        x: 0,
-        stagger: 0.15,
-        duration: 1,
-        ease: "back.out(2.5)",
+        y: 0,
+        stagger: 0.05,
+        duration: 0.75,
+        ease: "back.out(1.5)",
       }
     );
   }, [categories]);

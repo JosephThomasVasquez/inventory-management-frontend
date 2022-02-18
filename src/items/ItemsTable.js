@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteItem } from "../utils/api";
 import "./itemTable.style.css";
 import dayjs from "dayjs";
 import gsap from "gsap";
 
 const ItemsTable = ({ items, errorHandler }) => {
+  const navigate = useNavigate();
+  const { categoryId } = useParams();
+
   const itemRefs = useRef([]);
   itemRefs.current = [];
 
@@ -68,19 +71,20 @@ const ItemsTable = ({ items, errorHandler }) => {
       console.log("Deleted Item");
 
       setSelectedItem({ name: "", id: "" });
+      navigate(`/categories/${categoryId}/items`);
     } catch (error) {
       errorHandler(error);
     }
   };
 
   const handleConfirmation = ({ target }) => {
-    console.log(target.id);
+    // console.log(target.id);
 
     const foundItem = items.find((i) => i.id === Number(target.id));
-    console.log(foundItem);
+    // console.log(foundItem);
 
     setSelectedItem({ name: foundItem.name, id: foundItem.id });
-    console.log(selectedItem);
+    // console.log(selectedItem);
   };
 
   const deleteModal = (

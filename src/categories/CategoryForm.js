@@ -31,7 +31,6 @@ const CategoryForm = ({ errorHandler }) => {
     const getCategoryData = async () => {
       try {
         const response = await readCategory(categoryId, abortController.signal);
-        console.log(response[0]);
 
         if (response) {
           setFormData({
