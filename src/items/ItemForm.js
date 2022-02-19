@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { readItem, addItem, updateItem } from "../utils/api";
+import TextEditor from "./TextEditor";
 import gsap from "gsap";
 import dayjs from "dayjs";
 
@@ -256,6 +257,14 @@ const ItemForm = ({ categories, errorHandler }) => {
             value={formData?.description}
             onChange={handleChange}
           />
+        </div>
+
+        {/* Text Editor */}
+        <div className="mb-3" ref={addToRefs}>
+          <label htmlFor="description" className="form-label">
+            Content
+          </label>
+          <TextEditor />
         </div>
 
         {/* Release Date */}
