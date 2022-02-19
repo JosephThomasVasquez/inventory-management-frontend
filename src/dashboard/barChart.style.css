@@ -15,7 +15,7 @@
 
 .bar:hover {
   fill: var(--primary-color-hover);
-  transition: all 0.5s ease;
+  transition: all 0.15s ease;
 }
 
 .axis--x path {

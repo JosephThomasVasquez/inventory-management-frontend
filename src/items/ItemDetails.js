@@ -119,32 +119,34 @@ const ItemDetails = () => {
           </div>
 
           <div className="row">
-            {/* Price */}
-            <div className="col-2 mb-1 h6" ref={addToRefs}>
-              <span className="text-primary">Release Date:</span> {handleDate()}
-            </div>
-            {/* Model */}
-            <div className="col-2 mb-3 h6" ref={addToRefs}>
-              <span className="text-primary">Model:</span>{" "}
-              {itemDetails.model ? itemDetails.model : "N/A"}
-            </div>
             {/* Quantity */}
             <div className="col-2 mb-3 h6" ref={addToRefs}>
               <span className="text-primary">Qty:</span>{" "}
               {itemDetails.quantity_in_stock}
             </div>
+
+            {/* Model */}
+            <div className="col-2 mb-3 h6" ref={addToRefs}>
+              <span className="text-primary">Model:</span>{" "}
+              {itemDetails.model ? itemDetails.model : "N/A"}
+            </div>
+
             {/* Name */}
-            <div className="col-4 mb-1 h6" ref={addToRefs}>
+            <div className="col-2 mb-1 h6" ref={addToRefs}>
               <span className="text-primary"> Sku / Product No:</span>{" "}
               {itemDetails.sku}
+            </div>
+            {/* Release Date */}
+            <div className="col-3 mb-1 h6" ref={addToRefs}>
+              <span className="text-primary">Release Date:</span> {handleDate()}
             </div>
           </div>
 
           <div className="row">
             {/* Name */}
             <div className="col-2 mb-3 h6" ref={addToRefs}>
-              <span className="text-primary">Lbs(each):</span>{" "}
-              {itemDetails.weight_in_lbs}
+              <span className="text-primary">Weight:</span>{" "}
+              {itemDetails.weight_in_lbs} lbs.
             </div>
           </div>
         </div>
