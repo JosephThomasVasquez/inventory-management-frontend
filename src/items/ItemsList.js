@@ -16,7 +16,7 @@ const ItemsList = ({ errorHandler }) => {
   const itemRefs = useRef([]);
   itemRefs.current = [];
 
-  const [items, setItems] = useState();
+  const [items, setItems] = useState(null);
   const [tableView, setTableView] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState(state);
@@ -25,12 +25,20 @@ const ItemsList = ({ errorHandler }) => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    if (categoryId) {
-      setItems(null);
-      listItems(categoryId, abortController.signal)
-        .then(setItems)
-        .catch(setErrors);
-    }
+
+    const loadItems = async () => {
+      try {
+        if (categoryId) {
+          const response = await listItems(categoryId, abortController.signal);
+          setItems(response);
+          errorHandler("clearErrors");
+        }
+      } catch (error) {
+        errorHandler(error);
+      }
+    };
+
+    loadItems();
 
     return () => abortController.abort();
   }, [categoryId]);
