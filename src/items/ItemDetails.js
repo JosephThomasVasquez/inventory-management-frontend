@@ -13,7 +13,7 @@ const ItemDetails = () => {
   const itemRefs = useRef([]);
   itemRefs.current = [];
 
-  const [itemDetails, setItemDetails] = useState();
+  const [itemDetails, setItemDetails] = useState(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -23,6 +23,8 @@ const ItemDetails = () => {
       .catch((error) => {
         console.log(error);
       });
+
+    console.log("itemDetails:", itemDetails?.images_array);
     return () => abortController.abort();
   }, []);
 
@@ -36,7 +38,7 @@ const ItemDetails = () => {
       {
         opacity: 0,
         y: -100,
-        stagger: 0.15,
+        stagger: 0.05,
         duration: 0.75,
         ease: "back.out(2.5)",
       },
@@ -49,6 +51,24 @@ const ItemDetails = () => {
       }
     );
   }, [itemDetails]);
+
+  const mapImages = () => {
+    if (itemDetails.images_array?.length > 0) {
+      return itemDetails.images_array.map((image, index) => (
+        <div
+          key={`item-image-${index}`}
+          className="col-1 item-detail-thumbnail-box"
+          ref={addToRefs}
+        >
+          <img
+            src={image}
+            alt="Image thumbnail"
+            className="item-detail-thumbnail"
+          />
+        </div>
+      ));
+    }
+  };
 
   const handleDate = () => {
     if (!itemDetails.release_date) {
@@ -105,11 +125,14 @@ const ItemDetails = () => {
                 height="400"
               />
             </div>
-            {/* Name */}
+            {/* Description */}
             <div className="col-6 mb-3 h5" ref={addToRefs}>
               {itemDetails.description}
             </div>
           </div>
+
+          {/* Images */}
+          <div className="row mt-5">{mapImages()}</div>
 
           <div className="row">
             {/* Price */}
