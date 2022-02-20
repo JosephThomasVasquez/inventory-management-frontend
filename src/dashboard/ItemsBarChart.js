@@ -3,10 +3,19 @@ import { useLocation } from "react-router-dom";
 import ToolTip from "./ToolTip";
 import "./barChart.style.css";
 import * as d3 from "d3";
+import gsap from "gsap";
 
 const ItemsBarChart = ({ items }) => {
   const location = useLocation();
+
+  const itemRefs = useRef([]);
+  itemRefs.current = [];
+
   const svgRef = useRef(null);
+
+  const addToRefs = (e) => {
+    if (e && !itemRefs.current.includes(e)) itemRefs.current.push(e);
+  };
 
   const barChartConfig = {
     width: 1200,
@@ -26,6 +35,26 @@ const ItemsBarChart = ({ items }) => {
   };
 
   const [itemsData, setItemsData] = useState({ ...itemDataOptions });
+
+  useEffect(() => {
+    gsap.fromTo(
+      itemRefs.current,
+      {
+        opacity: 0,
+        y: -40,
+        stagger: 0.05,
+        duration: 0.75,
+        ease: "back.out(1.5)",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
+        duration: 0.75,
+        ease: "back.out(1.5)",
+      }
+    );
+  }, [items]);
 
   useEffect(() => {
     if (items) {
@@ -69,7 +98,6 @@ const ItemsBarChart = ({ items }) => {
         .data(items)
         .join("rect")
         .attr("class", "bar")
-        .attr("stroke", "url(#line-gradient)")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .attr("name", (d) => d.name)
