@@ -24,7 +24,7 @@ const ItemDetails = () => {
         console.log(error);
       });
 
-    console.log("itemDetails:", itemDetails?.images_array);
+    console.log("itemDetails:", itemDetails);
     return () => abortController.abort();
   }, []);
 
@@ -53,8 +53,19 @@ const ItemDetails = () => {
   }, [itemDetails]);
 
   const mapImages = () => {
-    if (itemDetails.images_array?.length > 0) {
-      return itemDetails.images_array.map((image, index) => (
+    if (itemDetails) {
+      const itemImages = [
+        itemDetails.image_1,
+        itemDetails.image_2,
+        itemDetails.image_3,
+        itemDetails.image_4,
+        itemDetails.image_5,
+      ];
+
+      const hasUrls = itemImages.filter((image) => image);
+      console.log("hasUrls", hasUrls);
+
+      return hasUrls.map((image, index) => (
         <div
           key={`item-image-${index}`}
           className="col-1 item-detail-thumbnail-box"

@@ -30,7 +30,11 @@ const ItemForm = ({ categories, errorHandler }) => {
     weight_in_lbs: 0,
     category_id: 1,
     main_imageUrl: "",
-    images_array: ["/icons8-camera-100.png"],
+    image_1: "",
+    image_2: "",
+    image_3: "",
+    image_4: "",
+    image_5: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -88,49 +92,23 @@ const ItemForm = ({ categories, errorHandler }) => {
     return () => abortController.abort();
   }, [itemId]);
 
-  // If images array exsists then map Images and handler
-  const mapImages = () => {
-    if (formData.images_array?.length > 0) {
-      return formData.images_array.map((image, index) => (
-        <div className="row" key={`item-image-${index}`}>
-          <div className="col-2">
-            <img
-              src={formData.images_array[index]}
-              alt=""
-              className="item-detail-thumbnail"
-            />
-          </div>
-          <div className="col me-3">
-            <label htmlFor={`img-detail-${index}`} className="form-label">
-              {`Image ${index + 1}`}
-            </label>
-            <input
-              type="text"
-              name={`img-detail-${index}`}
-              className="form-control"
-              id={index}
-              aria-describedby={`img-detail-${index}`}
-              placeholder="Enter name of the item"
-              value={formData?.images_array[index]}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-      ));
-    }
-  };
-
   const handleChange = ({ target }) => {
-    // Handle cahnge for imagges_array
-    if (target.id <= 4 || target.id >= 0) {
+    const invalidKeys = ["image-1", "image-2", "image-3", "image-4", "image-5"];
+
+    if (!invalidKeys.includes(target.name)) {
+      console.log(target.name);
+      setFormData({ ...formData, [target.name]: target.value });
+    } else if (target.id <= 4 || target.id >= 0) {
+      // Handle cahnge for imagges_array
+      console.log(target.id);
       setFormData({
         ...formData,
         images_array: (formData.images_array[target.id] = target.value),
       });
     }
 
-    setFormData({ ...formData, [target.name]: target.value });
-    console.log(target.id);
+    console.log(formData);
+    console.log(formData.images_array);
   };
 
   // Send POST request with formData
@@ -236,7 +214,137 @@ const ItemForm = ({ categories, errorHandler }) => {
 
         <div className="row">
           <div className="col">
-            <div className="list-group">{mapImages()}</div>
+            <div className="list-group">
+              {formData.image_1 ? (
+                <div className="row">
+                  <div className="col-2">
+                    <img
+                      src={formData.image_1}
+                      className="item-detail-thumbnail"
+                    />
+                  </div>
+                  <div className="col me-3">
+                    <label htmlFor="image_1" className="form-label">
+                      Image 1
+                    </label>
+                    <input
+                      type="text"
+                      name="image_1"
+                      className="form-control"
+                      id="1"
+                      aria-describedby="image_1"
+                      placeholder="Enter url for Image 1"
+                      value={formData?.image_1}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              {formData.image_2 ? (
+                <div className="row">
+                  <div className="col-2">
+                    <img
+                      src={formData.image_2}
+                      className="item-detail-thumbnail"
+                    />
+                  </div>
+                  <div className="col me-3">
+                    <label htmlFor="image_2" className="form-label">
+                      Image 2
+                    </label>
+                    <input
+                      type="text"
+                      name="image_2"
+                      className="form-control"
+                      id="1"
+                      aria-describedby="image_2"
+                      placeholder="Enter url for Image 2"
+                      value={formData?.image_2}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              {formData.image_3 ? (
+                <div className="row">
+                  <div className="col-2">
+                    <img
+                      src={formData.image_3}
+                      className="item-detail-thumbnail"
+                    />
+                  </div>
+                  <div className="col me-3">
+                    <label htmlFor="image_3" className="form-label">
+                      Image 3
+                    </label>
+                    <input
+                      type="text"
+                      name="image_3"
+                      className="form-control"
+                      id="1"
+                      aria-describedby="image_3"
+                      placeholder="Enter url for Image 3"
+                      value={formData?.image_3}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              {formData.image_4 ? (
+                <div className="row">
+                  <div className="col-2">
+                    <img
+                      src={formData.image_4}
+                      className="item-detail-thumbnail"
+                    />
+                  </div>
+                  <div className="col me-3">
+                    <label htmlFor="image_4" className="form-label">
+                      Image 4
+                    </label>
+                    <input
+                      type="text"
+                      name="image_4"
+                      className="form-control"
+                      id="1"
+                      aria-describedby="image_4"
+                      placeholder="Enter url for Image 2"
+                      value={formData?.image_4}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              {formData.image_5 ? (
+                <div className="row">
+                  <div className="col-2">
+                    <img
+                      src={formData.image_5}
+                      className="item-detail-thumbnail"
+                    />
+                  </div>
+                  <div className="col me-3">
+                    <label htmlFor="image_5" className="form-label">
+                      Image 5
+                    </label>
+                    <input
+                      type="text"
+                      name="image_5"
+                      className="form-control"
+                      id="1"
+                      aria-describedby="image_5"
+                      placeholder="Enter url for Image 2"
+                      value={formData?.image_5}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
 
