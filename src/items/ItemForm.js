@@ -93,22 +93,10 @@ const ItemForm = ({ categories, errorHandler }) => {
   }, [itemId]);
 
   const handleChange = ({ target }) => {
-    const invalidKeys = ["image-1", "image-2", "image-3", "image-4", "image-5"];
-
-    if (!invalidKeys.includes(target.name)) {
-      console.log(target.name);
-      setFormData({ ...formData, [target.name]: target.value });
-    } else if (target.id <= 4 || target.id >= 0) {
-      // Handle cahnge for imagges_array
-      console.log(target.id);
-      setFormData({
-        ...formData,
-        images_array: (formData.images_array[target.id] = target.value),
-      });
-    }
+    console.log(target.name);
+    setFormData({ ...formData, [target.name]: target.value });
 
     console.log(formData);
-    console.log(formData.images_array);
   };
 
   // Send POST request with formData
@@ -206,7 +194,7 @@ const ItemForm = ({ categories, errorHandler }) => {
               id="main_imageUrl"
               aria-describedby="main_imageUrl"
               placeholder="Enter name of the item"
-              value={formData?.main_imageUrl}
+              value={formData.main_imageUrl}
               onChange={handleChange}
             />
           </div>
@@ -215,135 +203,125 @@ const ItemForm = ({ categories, errorHandler }) => {
         <div className="row">
           <div className="col">
             <div className="list-group">
-              {formData.image_1 ? (
-                <div className="row">
-                  <div className="col-2">
-                    <img
-                      src={formData.image_1}
-                      className="item-detail-thumbnail"
-                    />
-                  </div>
-                  <div className="col me-3">
-                    <label htmlFor="image_1" className="form-label">
-                      Image 1
-                    </label>
-                    <input
-                      type="text"
-                      name="image_1"
-                      className="form-control"
-                      id="1"
-                      aria-describedby="image_1"
-                      placeholder="Enter url for Image 1"
-                      value={formData?.image_1}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="row mb-3 item-edit-thumbnail" ref={addToRefs}>
+                <div className="col-1">
+                  <img
+                    src={formData.image_1}
+                    className="item-detail-thumbnail"
+                  />
                 </div>
-              ) : null}
+                <div className="col me-3">
+                  <label htmlFor="image_1" className="form-label">
+                    Image 1
+                  </label>
+                  <input
+                    type="text"
+                    name="image_1"
+                    className="form-control"
+                    id="1"
+                    aria-describedby="image_1"
+                    placeholder="Enter url for Image 1"
+                    value={formData?.image_1}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
 
-              {formData.image_2 ? (
-                <div className="row">
-                  <div className="col-2">
-                    <img
-                      src={formData.image_2}
-                      className="item-detail-thumbnail"
-                    />
-                  </div>
-                  <div className="col me-3">
-                    <label htmlFor="image_2" className="form-label">
-                      Image 2
-                    </label>
-                    <input
-                      type="text"
-                      name="image_2"
-                      className="form-control"
-                      id="1"
-                      aria-describedby="image_2"
-                      placeholder="Enter url for Image 2"
-                      value={formData?.image_2}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="row mb-3 item-edit-thumbnail" ref={addToRefs}>
+                <div className="col-1">
+                  <img
+                    src={formData.image_2}
+                    className="item-detail-thumbnail"
+                  />
                 </div>
-              ) : null}
+                <div className="col me-3">
+                  <label htmlFor="image_2" className="form-label">
+                    Image 2
+                  </label>
+                  <input
+                    type="text"
+                    name="image_2"
+                    className="form-control"
+                    id="1"
+                    aria-describedby="image_2"
+                    placeholder="Enter url for Image 2"
+                    value={formData?.image_2}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
 
-              {formData.image_3 ? (
-                <div className="row">
-                  <div className="col-2">
-                    <img
-                      src={formData.image_3}
-                      className="item-detail-thumbnail"
-                    />
-                  </div>
-                  <div className="col me-3">
-                    <label htmlFor="image_3" className="form-label">
-                      Image 3
-                    </label>
-                    <input
-                      type="text"
-                      name="image_3"
-                      className="form-control"
-                      id="1"
-                      aria-describedby="image_3"
-                      placeholder="Enter url for Image 3"
-                      value={formData?.image_3}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="row mb-3 item-edit-thumbnail" ref={addToRefs}>
+                <div className="col-1">
+                  <img
+                    src={formData.image_3}
+                    className="item-detail-thumbnail"
+                  />
                 </div>
-              ) : null}
+                <div className="col me-3">
+                  <label htmlFor="image_3" className="form-label">
+                    Image 3
+                  </label>
+                  <input
+                    type="text"
+                    name="image_3"
+                    className="form-control"
+                    id="1"
+                    aria-describedby="image_3"
+                    placeholder="Enter url for Image 3"
+                    value={formData?.image_3}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
 
-              {formData.image_4 ? (
-                <div className="row">
-                  <div className="col-2">
-                    <img
-                      src={formData.image_4}
-                      className="item-detail-thumbnail"
-                    />
-                  </div>
-                  <div className="col me-3">
-                    <label htmlFor="image_4" className="form-label">
-                      Image 4
-                    </label>
-                    <input
-                      type="text"
-                      name="image_4"
-                      className="form-control"
-                      id="1"
-                      aria-describedby="image_4"
-                      placeholder="Enter url for Image 2"
-                      value={formData?.image_4}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="row mb-3 item-edit-thumbnail" ref={addToRefs}>
+                <div className="col-1">
+                  <img
+                    src={formData.image_4}
+                    className="item-detail-thumbnail"
+                  />
                 </div>
-              ) : null}
+                <div className="col me-3">
+                  <label htmlFor="image_4" className="form-label">
+                    Image 4
+                  </label>
+                  <input
+                    type="text"
+                    name="image_4"
+                    className="form-control"
+                    id="1"
+                    aria-describedby="image_4"
+                    placeholder="Enter url for Image 2"
+                    value={formData?.image_4}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
 
-              {formData.image_5 ? (
-                <div className="row">
-                  <div className="col-2">
-                    <img
-                      src={formData.image_5}
-                      className="item-detail-thumbnail"
-                    />
-                  </div>
-                  <div className="col me-3">
-                    <label htmlFor="image_5" className="form-label">
-                      Image 5
-                    </label>
-                    <input
-                      type="text"
-                      name="image_5"
-                      className="form-control"
-                      id="1"
-                      aria-describedby="image_5"
-                      placeholder="Enter url for Image 2"
-                      value={formData?.image_5}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="row mb-3 item-edit-thumbnail" ref={addToRefs}>
+                <div className="col-1">
+                  <img
+                    src={formData.image_5}
+                    className="item-detail-thumbnail"
+                  />
                 </div>
-              ) : null}
+                <div className="col me-3">
+                  <label htmlFor="image_5" className="form-label">
+                    Image 5
+                  </label>
+                  <input
+                    type="text"
+                    name="image_5"
+                    className="form-control"
+                    id="1"
+                    aria-describedby="image_5"
+                    placeholder="Enter url for Image 2"
+                    value={formData?.image_5}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

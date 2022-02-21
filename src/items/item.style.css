@@ -76,3 +76,23 @@
   max-height: 92px;
   height: 92px;
 }
+
+.item-edit-thumbnail {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1) !important;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.item-edit-thumbnail:hover {
+  transform: translate(0, -20px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  background-color: var(--primary-light-highlight-color);
+  background: linear-gradient(
+    170deg,
+    rgba(0, 186, 192, 0.25) 0%,
+    rgba(255, 255, 255, 1) 75%
+  );
+
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
