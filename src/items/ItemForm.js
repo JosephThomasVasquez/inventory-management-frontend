@@ -30,6 +30,7 @@ const ItemForm = ({ categories, errorHandler }) => {
     weight_in_lbs: 0,
     category_id: 1,
     main_imageUrl: "",
+    images_array: ["/icons8-camera-100.png"],
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -87,8 +88,49 @@ const ItemForm = ({ categories, errorHandler }) => {
     return () => abortController.abort();
   }, [itemId]);
 
+  // If images array exsists then map Images and handler
+  const mapImages = () => {
+    if (formData.images_array?.length > 0) {
+      return formData.images_array.map((image, index) => (
+        <div className="row" key={`item-image-${index}`}>
+          <div className="col-2">
+            <img
+              src={formData.images_array[index]}
+              alt=""
+              className="item-detail-thumbnail"
+            />
+          </div>
+          <div className="col me-3">
+            <label htmlFor={`img-detail-${index}`} className="form-label">
+              {`Image ${index + 1}`}
+            </label>
+            <input
+              type="text"
+              name={`img-detail-${index}`}
+              className="form-control"
+              id={index}
+              aria-describedby={`img-detail-${index}`}
+              placeholder="Enter name of the item"
+              value={formData?.images_array[index]}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+      ));
+    }
+  };
+
   const handleChange = ({ target }) => {
+    // Handle cahnge for imagges_array
+    if (target.id <= 4 || target.id >= 0) {
+      setFormData({
+        ...formData,
+        images_array: (formData.images_array[target.id] = target.value),
+      });
+    }
+
     setFormData({ ...formData, [target.name]: target.value });
+    console.log(target.id);
   };
 
   // Send POST request with formData
@@ -189,6 +231,12 @@ const ItemForm = ({ categories, errorHandler }) => {
               value={formData?.main_imageUrl}
               onChange={handleChange}
             />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col">
+            <div className="list-group">{mapImages()}</div>
           </div>
         </div>
 
