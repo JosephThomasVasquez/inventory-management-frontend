@@ -24,7 +24,6 @@ const ItemDetails = () => {
         console.log(error);
       });
 
-    console.log("itemDetails:", itemDetails);
     return () => abortController.abort();
   }, []);
 
@@ -63,7 +62,6 @@ const ItemDetails = () => {
       ];
 
       const hasUrls = itemImages.filter((image) => image);
-      console.log("hasUrls", hasUrls);
 
       return hasUrls.map((image, index) => (
         <div

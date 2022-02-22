@@ -19,6 +19,8 @@ const ItemForm = ({ categories, errorHandler }) => {
     if (e && !formRefs.current.includes(e)) formRefs.current.push(e);
   };
 
+  const sampleData = `<h1><strong style="color: rgb(102, 163, 224);">Description</strong></h1><p><br></p><h2><strong><u>Item</u></strong></h2><ul><li><strong>{item.name}</strong></li><li><strong>{item.sku}</strong></li><li><strong>{item.name}</strong></li><li><strong>{item.name}</strong></li><li><a href="www.google.com" rel="noopener noreferrer" target="_blank"><strong>Link</strong></a></li></ul>`;
+
   const initialFormData = {
     sku: "",
     name: "",
@@ -93,10 +95,7 @@ const ItemForm = ({ categories, errorHandler }) => {
   }, [itemId]);
 
   const handleChange = ({ target }) => {
-    console.log(target.name);
     setFormData({ ...formData, [target.name]: target.value });
-
-    console.log(formData);
   };
 
   // Send POST request with formData

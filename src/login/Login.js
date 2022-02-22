@@ -45,6 +45,7 @@ const Login = ({ errorHandler }) => {
 
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
+    console.log(formData);
   };
 
   const handleSubmit = (e) => {
@@ -100,10 +101,11 @@ const Login = ({ errorHandler }) => {
             <input
               type="text"
               className="form-control"
+              name="email"
               id="email"
               aria-describedby="email"
               placeholder="Enter email"
-              value={formData?.email}
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
@@ -116,10 +118,11 @@ const Login = ({ errorHandler }) => {
             <input
               type="password"
               className="form-control"
+              name="password"
               id="password"
               aria-describedby="password"
               placeholder="Enter password"
-              value={formData?.password}
+              value={formData.password}
               onChange={handleChange}
             />
           </div>
