@@ -392,13 +392,13 @@ const ItemForm = ({ categories, errorHandler }) => {
           />
         </div>
 
-        {/* Text Editor */}
+        {/* Text Editor
         <div className="mb-3" ref={addToRefs}>
           <label htmlFor="description" className="form-label">
             Content
           </label>
           <TextEditor />
-        </div>
+        </div> */}
 
         {/* Release Date */}
         <div className="mb-3" ref={addToRefs}>

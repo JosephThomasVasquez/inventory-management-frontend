@@ -16,7 +16,6 @@ const CategoryForm = ({ errorHandler }) => {
   const initialFormData = {
     name: "",
     description: "",
-    id: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
