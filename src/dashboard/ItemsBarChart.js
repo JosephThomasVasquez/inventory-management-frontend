@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import Loader from "../layout/Loader";
 import ToolTip from "./ToolTip";
 import "./barChart.style.css";
 import * as d3 from "d3";
@@ -141,11 +142,15 @@ const ItemsBarChart = ({ items }) => {
     <div className="row chart-body p-3">
       <div>Item Quantities</div>
       <div>
-        <svg
-          ref={svgRef}
-          width={barChartConfig.width}
-          height={barChartConfig.height}
-        ></svg>
+        {!items ? (
+          <Loader />
+        ) : (
+          <svg
+            ref={svgRef}
+            width={barChartConfig.width}
+            height={barChartConfig.height}
+          ></svg>
+        )}
       </div>
       {/* <div>{JSON.stringify(itemsData)}</div> */}
       <ToolTip />

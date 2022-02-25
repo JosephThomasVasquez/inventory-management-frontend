@@ -1,0 +1,25 @@
+.loader-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-center {
+  margin: auto 0;
+}
+
+.loader-main::after {
+  content: "";
+  width: 48px;
+  height: 48px;
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-top: 8px solid var(--primary-color-hover);
+  border-radius: 50%;
+  animation: loading 0.5s linear infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
