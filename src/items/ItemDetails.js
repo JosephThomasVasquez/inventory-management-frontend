@@ -66,7 +66,7 @@ const ItemDetails = () => {
       return hasUrls.map((image, index) => (
         <div
           key={`item-image-${index}`}
-          className="col-1 item-detail-thumbnail-box"
+          className="col-1 item-detail-thumbnail-box p-0"
           ref={addToRefs}
         >
           <img
