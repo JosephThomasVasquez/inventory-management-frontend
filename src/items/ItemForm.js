@@ -173,7 +173,7 @@ const ItemForm = ({ categories, errorHandler }) => {
       <form className="col-12" onSubmit={handleSubmit}>
         {/* Main Image Url */}
         <div className="row">
-          <div className="col-6">
+          <div className="col-6 mb-5">
             {formData.main_imageUrl ? (
               <img
                 src={formData.main_imageUrl}
