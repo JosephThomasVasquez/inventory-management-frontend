@@ -5,7 +5,7 @@ import ItemCard from "./ItemCard";
 import ItemsTable from "./ItemsTable";
 import gsap from "gsap";
 
-const ItemsList = ({ errorHandler }) => {
+const ItemsList = ({ categories, errorHandler }) => {
   const { categoryId } = useParams();
 
   const navigate = useNavigate();
@@ -16,12 +16,23 @@ const ItemsList = ({ errorHandler }) => {
   const itemRefs = useRef([]);
   itemRefs.current = [];
 
+  const [categoryName, setCategoryName] = useState();
   const [items, setItems] = useState(null);
   const [tableView, setTableView] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState(state);
 
   const [errors, setErrors] = useState(null);
+
+  useEffect(() => {
+    if (categories) {
+      const categoryData = categories.find(
+        (category) => category.id === Number(categoryId)
+      );
+
+      setCategoryName(categoryData?.name);
+    }
+  }, [categories]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -102,9 +113,24 @@ const ItemsList = ({ errorHandler }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-1">
-          <h2>Items</h2>
+        <div className="col-11">
+          <h2>
+            {categoryName} <span className="h5 text-secondary">( </span>
+            <span className="h4 text-primary fw-bold">{items?.length} </span>
+            <span className="h5 text-secondary">) </span>
+          </h2>
         </div>
+
+        <div className="col-1 my-auto button-back">
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={handleGoBack}
+          >
+            Back
+          </button>
+        </div>
+
         <div className="col my-auto">
           <div className="form-check form-switch">
             <input
@@ -120,16 +146,6 @@ const ItemsList = ({ errorHandler }) => {
               Table View
             </label>
           </div>
-        </div>
-
-        <div className="col-1 my-auto button-back">
-          <button
-            type="button"
-            className="btn btn-outline-primary"
-            onClick={handleGoBack}
-          >
-            Back
-          </button>
         </div>
 
         <div className="row my-2">

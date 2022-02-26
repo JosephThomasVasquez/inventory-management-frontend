@@ -225,7 +225,7 @@ const ItemsTable = ({ items, errorHandler }) => {
   return (
     <div>
       {deleteModal}
-      <table className="table">
+      <table className="table" ref={addToRefs}>
         <thead>
           <tr>{tableHeaders()}</tr>
         </thead>
