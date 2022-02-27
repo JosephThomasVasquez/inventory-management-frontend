@@ -7,7 +7,6 @@ const Login = ({ errorHandler }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  // console.log(location);
 
   const initialFormData = {
     email: "",
@@ -45,7 +44,7 @@ const Login = ({ errorHandler }) => {
 
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
-    console.log(formData);
+    // console.log(formData);
   };
 
   const handleSubmit = (e) => {

@@ -49,7 +49,7 @@ export async function registerUser(user, signal) {
 
 // POST / Login User
 export async function loginUser(user, signal) {
-  console.log("user", user);
+  // console.log("user", user);
   const url = new URL(`${API_BASE_URL}/api/users/login`);
   const options = {
     method: "POST",
