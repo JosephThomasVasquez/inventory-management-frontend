@@ -92,7 +92,11 @@ const ItemsList = ({ categories, errorHandler }) => {
 
   const mapItems = () => {
     return items.map((item) => (
-      <div className="col-3" key={item.id} ref={addToRefs}>
+      <div
+        className="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-12"
+        key={item.id}
+        ref={addToRefs}
+      >
         <ItemCard item={item} />
       </div>
     ));
@@ -113,7 +117,7 @@ const ItemsList = ({ categories, errorHandler }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-11">
+        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8">
           <h2>
             {categoryName} <span className="h5 text-secondary">( </span>
             <span className="h4 text-primary fw-bold">{items?.length} </span>
@@ -149,7 +153,7 @@ const ItemsList = ({ categories, errorHandler }) => {
         </div>
 
         <div className="row my-2">
-          <div className="col-2">
+          <div className="col-2 col-sm-12 col-12">
             <button className="btn btn-primary" onClick={handleClick}>
               <i className="fa fa-plus"></i> Add Item
             </button>

@@ -55,7 +55,7 @@ const CategoriesList = ({ categories }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col">
+        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8">
           <h2>Categories</h2>
         </div>
         <div className="col-1 button-back">
@@ -69,7 +69,7 @@ const CategoriesList = ({ categories }) => {
         </div>
 
         <div className="row my-2">
-          <div className="col-2">
+          <div className="col-2 col-sm-12 col-12">
             <button className="btn btn-primary" onClick={handleClick}>
               <i className="fa fa-plus"></i> Add Category
             </button>
@@ -77,7 +77,9 @@ const CategoriesList = ({ categories }) => {
         </div>
       </div>
 
-      <div className="col-6">{categories && categoryLinks()}</div>
+      <div className="col-6 col-sm-12 col-12">
+        {categories && categoryLinks()}
+      </div>
     </div>
   );
 };
