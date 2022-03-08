@@ -143,3 +143,11 @@ input[type="checkbox"]:focus,
 .button-back {
   position: relative;
 }
+
+.btn-fixed-main {
+  width: 120px;
+}
+
+.btn-fixed-edit {
+  width: 40px;
+}

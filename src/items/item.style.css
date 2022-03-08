@@ -1,9 +1,9 @@
 /* CARDS */
 
 .item-card {
+  min-width: 300px;
   min-height: 440px;
   max-height: 440px;
-  transition: all 0.5s ease;
 }
 
 .item-card:hover {

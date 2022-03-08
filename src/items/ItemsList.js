@@ -93,7 +93,7 @@ const ItemsList = ({ categories, errorHandler }) => {
   const mapItems = () => {
     return items.map((item) => (
       <div
-        className="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-12"
+        className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 item-card"
         key={item.id}
         ref={addToRefs}
       >
@@ -117,7 +117,7 @@ const ItemsList = ({ categories, errorHandler }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8">
+        <div className="col-12 col-xl-10 col-lg-10 col-md-10 col-sm-10">
           <h2>
             {categoryName} <span className="h5 text-secondary">( </span>
             <span className="h4 text-primary fw-bold">{items?.length} </span>
@@ -125,7 +125,7 @@ const ItemsList = ({ categories, errorHandler }) => {
           </h2>
         </div>
 
-        <div className="col-1 my-auto button-back">
+        <div className="col-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 my-auto button-back text-end mb-2">
           <button
             type="button"
             className="btn btn-outline-primary"
@@ -135,7 +135,7 @@ const ItemsList = ({ categories, errorHandler }) => {
           </button>
         </div>
 
-        <div className="col my-auto">
+        <div className="col-12 col-sm-12 my-auto mb-3">
           <div className="form-check form-switch">
             <input
               className="form-check-input"

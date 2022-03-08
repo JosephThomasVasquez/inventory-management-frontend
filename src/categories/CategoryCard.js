@@ -22,21 +22,24 @@ const CategoryCard = ({ category }) => {
             <p className="card-text">{category.description}</p>
 
             <Link
-              className="col-2 btn btn-primary"
+              className="col col-sm-3 col-md-2 col-lg-2 btn btn-primary btn-fixed-main"
               to={`/categories/${category.id}/items`}
             >
               <div className="">
                 <i className="fa-solid fa-boxes-stacked"></i> Items
               </div>
             </Link>
-            <button className="col btn btn-primary ms-3" onClick={handleClick}>
+            <button
+              className="col btn btn-primary btn-fixed-main ms-3"
+              onClick={handleClick}
+            >
               <div className="">
                 <i className="fa fa-plus"></i> Add Item
               </div>
             </button>
 
             <Link
-              className="col-1 btn btn-outline-primary ms-3"
+              className="col-2 col-sm-2 col-md-2 col-lg-2 btn btn-outline-primary btn-fixed-edit ms-3"
               to={`/categories/${category.id}/edit`}
             >
               <div className="">

@@ -5,7 +5,7 @@ import "./item.style.css";
 
 const ItemCard = ({ item }) => {
   return (
-    <div className="card shadow my-2 item-card">
+    <div className="card shadow my-2">
       {!item ? (
         <Loader />
       ) : (
@@ -41,7 +41,7 @@ const ItemCard = ({ item }) => {
 
             <div className="d-flex justify-content-start">
               <Link
-                className="col-4 btn btn-primary me-1"
+                className="col-4 btn btn-primary btn-fixed-main me-1"
                 to={`/items/${item.id}`}
               >
                 <div className="">
@@ -50,7 +50,7 @@ const ItemCard = ({ item }) => {
               </Link>
 
               <Link
-                className="col-2 btn btn-outline-primary ml-2"
+                className="col-2 btn btn-outline-primary btn-fixed-edit ms-3"
                 to={`/items/${item.id}/edit`}
               >
                 <div className="">
