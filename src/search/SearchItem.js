@@ -20,7 +20,10 @@ const SearchItem = ({ errorHandler }) => {
   };
 
   return (
-    <form className="d-flex col-4" onSubmit={handleSearch}>
+    <form
+      className="d-flex me-auto col-12 col-lg-6 col-md-4 col-sm-12"
+      onSubmit={handleSearch}
+    >
       <input
         className="form-control me-2"
         type="search"
@@ -29,7 +32,7 @@ const SearchItem = ({ errorHandler }) => {
         value={searchTerm ? searchTerm : ""}
         onChange={handleChange}
       />
-      <button className="col-2 btn btn-primary" type="submit">
+      <button className="col-2 btn btn-primary btn-fixed-edit" type="submit">
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
