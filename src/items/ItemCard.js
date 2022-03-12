@@ -5,7 +5,7 @@ import "./item.style.css";
 
 const ItemCard = ({ item }) => {
   return (
-    <div className="card shadow my-2">
+    <div className="card shadow my-2 item-card">
       {!item ? (
         <Loader />
       ) : (

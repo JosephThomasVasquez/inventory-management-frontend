@@ -93,7 +93,7 @@ const ItemsList = ({ categories, errorHandler }) => {
   const mapItems = () => {
     return items.map((item) => (
       <div
-        className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12 item-card"
+        className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12"
         key={item.id}
         ref={addToRefs}
       >
