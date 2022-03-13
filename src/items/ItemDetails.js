@@ -66,7 +66,7 @@ const ItemDetails = () => {
       return hasUrls.map((image, index) => (
         <div
           key={`item-image-${index}`}
-          className="col-1 item-detail-thumbnail-box p-0"
+          className="col-3 col-lg-1 col-md-2 col-sm-2 item-detail-thumbnail-box p-0"
           ref={addToRefs}
         >
           <img
@@ -94,7 +94,7 @@ const ItemDetails = () => {
   return (
     <div className="container">
       <div className="row my-auto">
-        <div className="col-11 text-primary">
+        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8 text-primary">
           <h2 ref={addToRefs}>{itemDetails?.name}</h2>
         </div>
 
@@ -125,7 +125,10 @@ const ItemDetails = () => {
         <div>
           <div className="row">
             {/* Main Image */}
-            <div className="col-6 mb-3 h5" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-6 col-md-6 col-sm-12 mb-3 h5"
+              ref={addToRefs}
+            >
               <img
                 src={itemDetails.main_imageUrl}
                 alt="default_image"
@@ -135,7 +138,10 @@ const ItemDetails = () => {
               />
             </div>
             {/* Description */}
-            <div className="col-6 mb-3 h5" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-6 col-md-6 col-sm-12 mb-3 h5"
+              ref={addToRefs}
+            >
               {itemDetails.description}
             </div>
           </div>
@@ -145,38 +151,54 @@ const ItemDetails = () => {
 
           <div className="row">
             {/* Price */}
-            <div className="col-4 my-5 h2 text-primary" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-6 col-md-6 col-sm-12 my-5 h2 text-primary"
+              ref={addToRefs}
+            >
               ${itemDetails.price}
             </div>
           </div>
 
           <div className="row">
             {/* Quantity */}
-            <div className="col-2 mb-3 h6" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-2 col-md-3 col-sm-4 mb-3 h6"
+              ref={addToRefs}
+            >
               <span className="text-primary">Qty:</span>{" "}
               {itemDetails.quantity_in_stock}
             </div>
 
             {/* Model */}
-            <div className="col-2 mb-3 h6" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-2 col-md-3 col-sm-4 mb-3 h6"
+              ref={addToRefs}
+            >
               <span className="text-primary">Model:</span>{" "}
               {itemDetails.model ? itemDetails.model : "N/A"}
             </div>
 
             {/* Name */}
-            <div className="col-2 mb-1 h6" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-2 col-md-3 col-sm-4 mb-3 h6"
+              ref={addToRefs}
+            >
               <span className="text-primary"> Sku / Product No:</span>{" "}
               {itemDetails.sku}
             </div>
             {/* Release Date */}
-            <div className="col-3 mb-1 h6" ref={addToRefs}>
+            <div
+              className="col-12 col-lg-2 col-md-3 col-sm-4 mb-3 h6"
+              ref={addToRefs}
+            >
               <span className="text-primary">Release Date:</span> {handleDate()}
             </div>
-          </div>
 
-          <div className="row">
-            {/* Name */}
-            <div className="col-2 mb-3 h6" ref={addToRefs}>
+            {/* weight */}
+            <div
+              className="col-12 col-lg-2 col-md-3 col-sm-4 mb-3 h6"
+              ref={addToRefs}
+            >
               <span className="text-primary">Weight:</span>{" "}
               {itemDetails.weight_in_lbs} lbs.
             </div>
