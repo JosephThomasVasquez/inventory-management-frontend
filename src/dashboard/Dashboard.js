@@ -12,13 +12,19 @@ const Dashboard = ({ categories, items }) => {
       </div>
 
       <div className="row">
-        <Link className="col-2 btn btn-primary" to={`/categories`}>
+        <Link
+          className="col-2 btn btn-primary btn-dashboard-main ms-3"
+          to={`/categories`}
+        >
           <i className="fa-solid fa-list"></i> Categories:
           <span className="col"> {categories ? categories.length : null}</span>
         </Link>
       </div>
       <div className="row my-3">
-        <Link className="col-2 btn btn-primary" to={`/categories/create`}>
+        <Link
+          className="col-2 btn btn-primary btn-dashboard-main ms-3"
+          to={`/categories/create`}
+        >
           <div className="">
             <i className="fa fa-plus"></i> Create Category
           </div>
