@@ -15,6 +15,7 @@ const ItemDetails = () => {
   itemRefs.current = [];
 
   const [itemDetails, setItemDetails] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -52,6 +53,10 @@ const ItemDetails = () => {
     );
   }, [itemDetails]);
 
+  useEffect(() => {
+    setPreviewImage(itemDetails?.main_imageUrl);
+  }, [itemDetails]);
+
   const mapImages = () => {
     if (itemDetails) {
       const itemImages = [
@@ -74,6 +79,7 @@ const ItemDetails = () => {
             src={image}
             alt="Image thumbnail"
             className="item-detail-thumbnail"
+            onClick={handleImageSwap}
           />
         </div>
       ));
@@ -88,6 +94,10 @@ const ItemDetails = () => {
     return dayjs(itemDetails.release_date).format("MMM DD, YYYY");
   };
 
+  const handleImageSwap = ({ target }) => {
+    setPreviewImage(target.src);
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -96,7 +106,9 @@ const ItemDetails = () => {
     <div className="container">
       <div className="row my-auto">
         <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8 text-primary">
-          <h2 ref={addToRefs}>{itemDetails?.name}</h2>
+          <h2 className="fw-bold" ref={addToRefs}>
+            {itemDetails?.name}
+          </h2>
         </div>
 
         <div className="col-1 button-back">
@@ -131,7 +143,7 @@ const ItemDetails = () => {
               ref={addToRefs}
             >
               <img
-                src={itemDetails.main_imageUrl}
+                src={previewImage}
                 alt="default_image"
                 className="main-item-image"
                 width="300"
