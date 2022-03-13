@@ -4,8 +4,11 @@
 
 .navbar-bg {
   background: linear-gradient(
-    170deg,
-    var(--primary-color) 0%,
+    180deg,
+    rgb(0, 70, 102) 0%,
+    var(--primary-color) 10%,
+    rgb(0, 46, 73) 60%,
+    rgb(0, 82, 121) 99%,
     rgb(0, 46, 73) 100%
   );
 }

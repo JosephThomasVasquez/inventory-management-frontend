@@ -1,11 +1,12 @@
 import React from "react";
 import SearchItem from "../search/SearchItem";
 import "./navMenu.styles.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavMenu = () => {
+  console.log(useLocation());
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark py-3 navbar-bg">
+    <nav className="navbar navbar-expand-lg navbar-dark py-3 navbar-bg shadow">
       <div className="container-fluid">
         <Link to="/dashboard" className="navbar-brand">
           <div className="" aria-current="page" href="#">
