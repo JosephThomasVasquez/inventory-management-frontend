@@ -61,6 +61,3 @@ export const isAuthenticated = () => {
     }
   }
 };
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjQ3MTI3ODg1LCJleHAiOjE2NDcyMTQyODV9.mSlpJcVuiSn33l7_7gntqRHpcone7WbGY-KiHtJY_p0
-// token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjQ3MTI3ODg1LCJleHAiOjE2NDcyMTQyODV9.mSlpJcVuiSn33l7_7gntqRHpcone7WbGY-KiHtJY_p0"
