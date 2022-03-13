@@ -505,14 +505,14 @@ const ItemForm = ({ categories, errorHandler }) => {
 
         <button
           type="submit"
-          className="col-2 btn btn-primary me-3"
+          className="col-2 btn btn-primary me-3 btn-fixed-main"
           ref={addToRefs}
         >
           Submit
         </button>
         <button
           type="button"
-          className="col-2 btn btn-secondary"
+          className="col-2 btn btn-secondary btn-fixed-main"
           ref={addToRefs}
           onClick={handleGoBack}
         >

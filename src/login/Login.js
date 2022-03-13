@@ -79,7 +79,7 @@ const Login = ({ errorHandler }) => {
   return (
     <div className="container">
       <div className="row my-auto">
-        <div className="col-11">
+        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8">
           <h2>Login</h2>
         </div>
 
@@ -95,7 +95,7 @@ const Login = ({ errorHandler }) => {
       </div>
 
       <div className="row">
-        <form className="col-6" onSubmit={handleSubmit}>
+        <form className="col-12 col-md-6" onSubmit={handleSubmit}>
           {/* email */}
           <div className="mb-3" ref={addToRefs}>
             <label htmlFor="email" className="form-label">
@@ -133,13 +133,16 @@ const Login = ({ errorHandler }) => {
           <div className="row mx-0">
             <button
               type="submit"
-              className="col-2 btn btn-primary"
+              className="col-2 btn btn-primary btn-fixed-main"
               ref={addToRefs}
             >
               Submit
             </button>
 
-            <div className="col-5 my-auto ms-auto text-end p-0" ref={addToRefs}>
+            <div
+              className="col-12 my-auto ms-auto text-end p-0"
+              ref={addToRefs}
+            >
               Need an account?
               <span
                 className="text-primary fw-bold"
