@@ -116,7 +116,7 @@ const CategoryForm = ({ errorHandler }) => {
   return (
     <div className="container">
       <div className="row my-auto">
-        <div className="col-11">
+        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8">
           <h2>{categoryId ? "Edit Category" : "Create Category"}</h2>
         </div>
 
@@ -131,7 +131,7 @@ const CategoryForm = ({ errorHandler }) => {
         </div>
       </div>
 
-      <form className="col-6" onSubmit={handleSubmit}>
+      <form className="col-12 col-md-6" onSubmit={handleSubmit}>
         {/* Name */}
         <div className="mb-3" ref={addToRefs}>
           <label htmlFor="name" className="form-label">
@@ -166,14 +166,14 @@ const CategoryForm = ({ errorHandler }) => {
 
         <button
           type="submit"
-          className="col-2 btn btn-primary me-3"
+          className="col-6 col-sm-2 btn btn-primary me-3 btn-fixed-main"
           ref={addToRefs}
         >
           Submit
         </button>
         <button
           type="button"
-          className="col-2 btn btn-secondary"
+          className="col-6 col-sm-2 btn btn-secondary btn-fixed-main"
           ref={addToRefs}
           onClick={handleGoBack}
         >
