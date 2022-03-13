@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../utils/api";
 import gsap from "gsap";
+import { authenticateUser } from "../utils/auth";
 
 const Login = ({ errorHandler }) => {
   const navigate = useNavigate();
@@ -55,10 +56,13 @@ const Login = ({ errorHandler }) => {
 
       try {
         const response = await loginUser(formData, abortController.abort());
-        setFormData(response);
-        errorHandler("clearErrors");
 
-        navigate("/dashboard");
+        console.log("Trying to authenticate user...", response);
+        authenticateUser(response, () => {
+          setFormData(response);
+          errorHandler("clearErrors");
+          navigate("/dashboard");
+        });
       } catch (error) {
         error && errorHandler(error);
         console.log(error);
