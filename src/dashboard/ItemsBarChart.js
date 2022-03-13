@@ -35,7 +35,6 @@ const ItemsBarChart = ({ items }) => {
     color: "#ff00ff",
     items: items,
   };
-  console.log(window);
 
   const [itemsData, setItemsData] = useState({ ...itemDataOptions });
   const [dimensions, setDimensions] = useState({
@@ -141,7 +140,6 @@ const ItemsBarChart = ({ items }) => {
   }, [items]);
 
   const resizeHandler = useDebouncedCallback(() => {
-    console.log(dimensions);
     setDimensions({
       width: window.innerWidth,
       height: window.innerHeight,

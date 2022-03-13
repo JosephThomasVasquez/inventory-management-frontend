@@ -76,7 +76,7 @@ const Register = ({ errorHandler }) => {
   return (
     <div className="container">
       <div className="row my-auto">
-        <div className="col-11">
+        <div className="col-9 col-xl-11 col-lg-11 col-md-11 col-sm-8">
           <h2>Register</h2>
         </div>
 
@@ -92,10 +92,10 @@ const Register = ({ errorHandler }) => {
       </div>
 
       <div className="row">
-        <form className="col-6" onSubmit={handleSubmit}>
+        <form className="col-12 col-md-6" onSubmit={handleSubmit}>
           <div className="row">
             {/* first_name */}
-            <div className="col-6 mb-3" ref={addToRefs}>
+            <div className="col-12 col-lg-6 mb-3" ref={addToRefs}>
               <label htmlFor="first_name" className="form-label">
                 First Name
               </label>
@@ -111,7 +111,7 @@ const Register = ({ errorHandler }) => {
             </div>
 
             {/* last_name */}
-            <div className="col-6 mb-3" ref={addToRefs}>
+            <div className="ccol-12 col-lg-6 mb-3" ref={addToRefs}>
               <label htmlFor="last_name" className="form-label">
                 Last Name
               </label>
@@ -129,7 +129,7 @@ const Register = ({ errorHandler }) => {
 
           <div className="row">
             {/* user_name */}
-            <div className="col-6 mb-3" ref={addToRefs}>
+            <div className="col-12 col-lg-6 mb-3" ref={addToRefs}>
               <label htmlFor="user_name" className="form-label">
                 Username
               </label>
@@ -145,7 +145,7 @@ const Register = ({ errorHandler }) => {
             </div>
 
             {/* email */}
-            <div className="col-6 mb-3" ref={addToRefs}>
+            <div className="col-12 col-lg-6 mb-3" ref={addToRefs}>
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -163,7 +163,7 @@ const Register = ({ errorHandler }) => {
 
           <div className="row">
             {/* password */}
-            <div className="col-6 mb-3" ref={addToRefs}>
+            <div className="col-12 col-lg-6 mb-3" ref={addToRefs}>
               <label htmlFor="password" className="form-label">
                 Password
               </label>
@@ -179,7 +179,7 @@ const Register = ({ errorHandler }) => {
             </div>
 
             {/* confirm password */}
-            <div className="col-6 mb-3" ref={addToRefs}>
+            <div className="col-12 col-lg-6 mb-3" ref={addToRefs}>
               <label htmlFor="confirm_password" className="form-label">
                 Confirm Password
               </label>
@@ -198,12 +198,15 @@ const Register = ({ errorHandler }) => {
           <div className="row mx-0">
             <button
               type="submit"
-              className="col-2 btn btn-primary"
+              className="col-2 btn btn-primary btn-fixed-main"
               ref={addToRefs}
             >
               Submit
             </button>
-            <div className="col-5 my-auto ms-auto text-end p-0" ref={addToRefs}>
+            <div
+              className="col-12 my-auto ms-auto text-end p-0"
+              ref={addToRefs}
+            >
               Already registered?
               <span
                 className="text-primary fw-bold"
