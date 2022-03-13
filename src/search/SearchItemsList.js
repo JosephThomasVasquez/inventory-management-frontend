@@ -23,7 +23,7 @@ const SearchItemList = ({ errorHandler }) => {
 
   //   console.log("search", search);
   //   console.log("state", state);
-  console.log("location", location);
+  // console.log("location", location);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -68,7 +68,11 @@ const SearchItemList = ({ errorHandler }) => {
 
   const mapItems = () => {
     return items.map((item) => (
-      <div className="col-3" key={item.id} ref={addToRefs}>
+      <div
+        className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12"
+        key={item.id}
+        ref={addToRefs}
+      >
         <ItemCard item={item} />
       </div>
     ));
@@ -89,10 +93,25 @@ const SearchItemList = ({ errorHandler }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-1">
-          <h2>Items</h2>
+        <div className="col-12 col-xl-10 col-lg-10 col-md-10 col-sm-10">
+          <h2>
+            Search Items <span className="h5 text-secondary">( </span>
+            <span className="h4 text-primary fw-bold">{items?.length} </span>
+            <span className="h5 text-secondary">) </span>
+          </h2>
         </div>
-        <div className="col my-auto">
+
+        <div className="col-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 my-auto button-back text-end mb-2">
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={handleGoBack}
+          >
+            Back
+          </button>
+        </div>
+
+        <div className="col-12 col-sm-12 my-auto mb-3">
           <div className="form-check form-switch">
             <input
               className="form-check-input"
@@ -109,24 +128,13 @@ const SearchItemList = ({ errorHandler }) => {
           </div>
         </div>
 
-        <div className="col-1 my-auto button-back">
-          <button
-            type="button"
-            className="btn btn-outline-primary"
-            onClick={handleGoBack}
-          >
-            Back
-          </button>
-        </div>
-
         <div className="row my-2">
-          <div className="col-2">
+          <div className="col-2 col-sm-12 col-12">
             <button className="btn btn-primary" onClick={handleClick}>
               <i className="fa fa-plus"></i> Add Item
             </button>
           </div>
         </div>
-        {/* {JSON.stringify(items)} */}
       </div>
 
       {tableView ? (
