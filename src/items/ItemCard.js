@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Loader from "../layout/Loader";
 import "./item.style.css";
+import addCommas from "../utils/numberFormat";
 
 const ItemCard = ({ item }) => {
   return (
@@ -30,7 +31,7 @@ const ItemCard = ({ item }) => {
               )}
             </p>
 
-            <div className="col h4">${item.price}</div>
+            <div className="col h4">${addCommas(item.price)}</div>
 
             <div className="col my-2">
               Qty:{" "}

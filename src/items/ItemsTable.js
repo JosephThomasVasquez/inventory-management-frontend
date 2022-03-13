@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import addCommas from "../utils/numberFormat";
 import { deleteItem } from "../utils/api";
 import "./itemTable.style.css";
 import dayjs from "dayjs";
@@ -171,7 +172,7 @@ const ItemsTable = ({ items, errorHandler }) => {
           </td>
 
           <td colSpan="1" className="text-primary fw-bold align-middle">
-            ${price}
+            ${addCommas(price)}
           </td>
           <td colSpan="1" className="align-middle">
             {quantity_in_stock}

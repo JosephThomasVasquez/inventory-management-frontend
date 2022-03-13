@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import "./item.style.css";
+import addCommas from "../utils/numberFormat";
 import { readItem } from "../utils/api";
 import dayjs from "dayjs";
 import gsap from "gsap";
@@ -155,7 +156,7 @@ const ItemDetails = () => {
               className="col-12 col-lg-6 col-md-6 col-sm-12 my-5 h2 text-primary"
               ref={addToRefs}
             >
-              ${itemDetails.price}
+              ${addCommas(itemDetails.price)}
             </div>
           </div>
 
