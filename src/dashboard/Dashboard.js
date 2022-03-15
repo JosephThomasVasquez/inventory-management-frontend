@@ -1,8 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ItemsBarChart from "./ItemsBarChart";
 
 const Dashboard = ({ categories, items }) => {
+  // const navigate = useNavigate();
+  // const location = useLocation();
+
+  // useEffect(() => {
+  //   console.log("found user!", user);
+  //   if (!user) {
+  //     navigate("/login");
+  //   } else {
+  //     navigate("/dashboard");
+  //   }
+  // }, []);
   return (
     <div className="container">
       <div className="row">

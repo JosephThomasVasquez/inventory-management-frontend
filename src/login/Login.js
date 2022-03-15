@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import useAuth from "../auth/useAuth";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../utils/api";
 import gsap from "gsap";
@@ -15,6 +16,12 @@ const Login = ({ errorHandler }) => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const { setAuth } = useAuth();
+
+  // console.log("useAuth:", useAuth());
+
+  // console.log("setAuth", setAuth);
+  // console.log("user", user);
 
   const formRefs = useRef([]);
   formRefs.current = [];
@@ -60,6 +67,7 @@ const Login = ({ errorHandler }) => {
         console.log("Trying to authenticate user...", response);
         authenticateUser(response, () => {
           setFormData(response);
+          setAuth(response);
           errorHandler("clearErrors");
           navigate("/dashboard");
         });
