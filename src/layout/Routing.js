@@ -59,7 +59,7 @@ const Routing = () => {
 
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout auth={auth} />}>
             {/* DASHBOARD */}
 
             <Route element={<RequireAuth />}>
@@ -68,6 +68,7 @@ const Routing = () => {
                 path="/dashboard"
                 element={
                   <Dashboard
+                    auth={auth}
                     categories={categories}
                     items={items}
                     errorHandler={errorHandler}

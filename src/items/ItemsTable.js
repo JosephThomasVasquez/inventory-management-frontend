@@ -185,9 +185,9 @@ const ItemsTable = ({ items, errorHandler }) => {
           </td>
 
           <td>
-            <Link className="col btn btn-primary mt-1" to={`/items/${item.id}`}>
+            <Link className="col btn btn-primary" to={`/items/${item.id}`}>
               <div className="">
-                <i className="fa-solid fa-eye"></i> View
+                <i className="fa-solid fa-eye"></i>
               </div>
             </Link>
           </td>
@@ -198,7 +198,7 @@ const ItemsTable = ({ items, errorHandler }) => {
               to={`/items/${item.id}/edit`}
             >
               <div className="">
-                <i className="fa-solid fa-pen-to-square"></i> Edit
+                <i className="fa-solid fa-pen-to-square"></i>
               </div>
             </Link>
           </td>
