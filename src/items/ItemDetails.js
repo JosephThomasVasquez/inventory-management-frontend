@@ -160,7 +160,21 @@ const ItemDetails = () => {
           </div>
 
           {/* Images */}
-          <div className="row mt-5">{mapImages()}</div>
+          <div className="row mt-5">
+            <div
+              key={`item-image-main`}
+              className="col-3 col-lg-1 col-md-2 col-sm-2 item-detail-thumbnail-box p-0"
+              ref={addToRefs}
+            >
+              <img
+                src={itemDetails.main_imageUrl}
+                alt="Image thumbnail"
+                className="item-detail-thumbnail"
+                onClick={handleImageSwap}
+              />
+            </div>
+            {mapImages()}
+          </div>
 
           <div className="row">
             {/* Price */}
