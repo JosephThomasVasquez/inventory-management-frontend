@@ -5,10 +5,10 @@
   --primary-color-hover: rgba(132, 0, 255, 1);
   --primary-light-highlight-color: rgba(74, 30, 233, 0.1); */
 
-  --primary-color: rgb(0, 110, 173);
-  --primary-color-hover: rgb(0, 186, 192);
+  --primary-color: #006ead;
+  --primary-color-hover: #00bac0;
   --primary-light-highlight-color: rgba(29, 199, 221, 0.1);
-  --primary-brand-color: rgb(0, 247, 255);
+  --primary-brand-color: #00f7ff;
 }
 
 body {

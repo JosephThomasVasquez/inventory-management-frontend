@@ -43,7 +43,7 @@ const Dashboard = ({ categories, items }) => {
       </div>
 
       <div className="row">
-        <div className="col">
+        <div className="">
           <ItemsBarChart items={items} />
         </div>
       </div>

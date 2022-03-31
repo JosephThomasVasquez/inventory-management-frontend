@@ -165,6 +165,8 @@ const ItemsBarChart = ({ items }) => {
     setItemsData({ ...itemDataOptions });
   }, [items, dimensions, location]);
 
+  console.log("dimensions", dimensions.width);
+
   return (
     <div className="row chart-body p-3">
       <div>Item Quantities</div>
@@ -174,7 +176,11 @@ const ItemsBarChart = ({ items }) => {
         ) : (
           <svg
             ref={svgRef}
-            width={dimensions.width * 0.8}
+            width={
+              dimensions.width * 0.6 < barChartConfig.width
+                ? dimensions.width * 0.6
+                : barChartConfig.width
+            }
             height={dimensions.height / 3}
             className="stock-chart-data"
           ></svg>
