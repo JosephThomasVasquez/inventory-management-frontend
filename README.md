@@ -1,5 +1,7 @@
 # Inventory Management Front-End
 
+## Live Project: [Demo](https://inventory-manager-client.vercel.app)
+
 ## **Desciption**
 
 An Inventory Management system allowing users to Register an account, Login, and manage inventory but adding Categories, Items, and details. Can switch display to Card View or Table Views. Uses the Top-Down approach to App development.
