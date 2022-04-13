@@ -164,4 +164,12 @@ input[type="checkbox"]:focus,
 
 .btn-fixed-edit {
   width: 40px;
+  margin-left: 16px;
+}
+
+@media only screen and (max-width: 394px) {
+  .btn-fixed-edit {
+    width: 120px;
+    margin: 10px 0 0 0;
+  }
 }

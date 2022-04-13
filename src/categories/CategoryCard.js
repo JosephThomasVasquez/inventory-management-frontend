@@ -30,7 +30,7 @@ const CategoryCard = ({ category }) => {
               </div>
             </Link>
             <button
-              className="col btn btn-primary btn-fixed-main ms-3"
+              className="col col-sm-3 btn btn-primary btn-fixed-main ms-3"
               onClick={handleClick}
             >
               <div className="">
@@ -39,7 +39,7 @@ const CategoryCard = ({ category }) => {
             </button>
 
             <Link
-              className="col-2 col-sm-2 col-md-2 col-lg-2 btn btn-outline-primary btn-fixed-edit ms-3"
+              className="col-2 col-sm-2 col-md-2 col-lg-2 btn btn-outline-primary btn-fixed-edit"
               to={`/categories/${category.id}/edit`}
             >
               <div className="">
