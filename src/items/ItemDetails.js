@@ -135,7 +135,7 @@ const ItemDetails = () => {
       </div>
 
       {itemDetails && (
-        <div>
+        <div className="items-area">
           <div className="row">
             {/* Main Image */}
             <div

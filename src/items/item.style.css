@@ -1,5 +1,9 @@
 /* CARDS */
 
+.items-area {
+  margin-bottom: 100px;
+}
+
 .item-card {
   min-width: 300px;
   min-height: 440px;
