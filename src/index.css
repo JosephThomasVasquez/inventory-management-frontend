@@ -159,17 +159,18 @@ input[type="checkbox"]:focus,
 }
 
 .btn-fixed-main {
+  margin: auto 0;
   width: 120px;
 }
 
 .btn-fixed-edit {
   width: 40px;
-  margin-left: 16px;
+  margin: auto 0;
 }
 
 @media only screen and (max-width: 394px) {
   .btn-fixed-edit {
-    width: 120px;
-    margin: 10px 0 0 0;
+    width: 40px;
+    margin: auto 0;
   }
 }
