@@ -226,7 +226,7 @@ const ItemsTable = ({ items, errorHandler }) => {
   return (
     <div>
       {deleteModal}
-      <table className="table shadow rounded" ref={addToRefs}>
+      <table className="table table-responsive shadow rounded" ref={addToRefs}>
         <thead>
           <tr>{tableHeaders()}</tr>
         </thead>
